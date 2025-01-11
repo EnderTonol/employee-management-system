@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.6.10",
+    "apexcharts": "^4.3.0",
     "framer-motion": "^11.15.0",
     "react": "^18.3.1",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.1"
   },

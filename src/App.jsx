@@ -1,10 +1,10 @@
 import {Button} from '@nextui-org/react';
-import Nav from './layouts/Nav';
+import Home from './components/Home';
 function App() {
   return (
-    <div className="App">
-      <Button>ello</Button>
-    </div>
+    <>
+    <Home/>
+    </>
   );
 }
 export default App;
