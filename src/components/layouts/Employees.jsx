@@ -42,7 +42,10 @@ function Employees() {
     };
 
     return ( 
-        <div className="p-2 grow">
+        <motion.div className="p-2 grow"
+        initial={{opacity: 0, y: -10}}
+        animate={{opacity: 1, y: 0}}
+        >
         <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Employees</motion.h1>
     {employees.length !== 0 ? ( <Button color="primary" onPress={onOpen}>Add Employee</Button>) : null}
         {/* Employee Modal */}
@@ -131,7 +134,7 @@ function Employees() {
             </div>
         )
         }
-        </div>
+        </motion.div>
     );
 }
 

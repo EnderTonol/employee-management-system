@@ -6,12 +6,6 @@ import {
     Button,
     TimeInput,
     DatePicker,
-    Table,
-    TableHeader,
-    TableBody,
-    TableColumn,
-    TableRow,
-    TableCell,
     Select,
     SelectItem,
     Modal,
@@ -113,7 +107,10 @@ function ManageEvents() {
     };
 
     return (
-        <div className="grow">
+        <motion.div className="grow"
+        initial={{opacity: 0, y: -10}}
+        animate={{opacity: 1, y: 0}}
+        >
             <div className="w-full p-2">
                 <Modal
                     isOpen={isOpen}
@@ -249,9 +246,9 @@ function ManageEvents() {
                     </Form>
                     {(Todo.length > 0)? (<div className="p-2 mt-2 bg-slate-100 rounded-3xl">
                         <Card>
-                            <TableHeader>
+                            <CardHeader>
                                 <p>Task</p>
-                            </TableHeader>
+                            </CardHeader>
                             <Divider/>
                             <CardBody>
                                 {Todo.map((itm, idx) => (
@@ -270,9 +267,9 @@ function ManageEvents() {
                             </CardBody>
                         </Card>
                     </div>) : (<Card> 
-                            <TableHeader>
+                            <CardHeader>
                                 <p>Task</p>
-                            </TableHeader>
+                            </CardHeader>
                             <CardBody >
                                 <p className="text-center">No task yet</p><br/>
                                 <p className="text-center">Add your To-dos and Keep track of them accross Ninty Workspace</p>
@@ -280,7 +277,7 @@ function ManageEvents() {
                             </Card>)}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 

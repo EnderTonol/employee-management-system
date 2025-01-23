@@ -13,7 +13,10 @@ function EmployeesShow() {
     const { employees, setEmployees } = context;
 
     return employees.length !== 0 ? (
-        <motion.div className="p-2 m-2">
+        <motion.div className="p-2 m-2"
+        initial={{opacity: 0, y: -10}}
+        animate={{opacity: 1, y: 0}}
+        >
             <motion.div>
                 <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">
                     Employees DataSets

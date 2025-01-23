@@ -22,7 +22,10 @@ function Departments(){
     };
 
     return (
-        <div className="flex flex-col h-full gap-2 p-2 grow">
+        <motion.div className="flex flex-col h-full gap-2 p-2 grow"
+        initial={{opacity: 0, y: -10}}
+        animate={{opacity: 1, y: 0}}
+        >
             <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Departments</motion.h1>
             <Accordion variant="shadow" >
                 <AccordionItem title="Add Department" >
@@ -93,7 +96,7 @@ function Departments(){
                     <h1 className="font-sans text-xl font-bold">No Departments Found</h1>
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 }
 

@@ -121,7 +121,7 @@ function DashBoard() {
                     <h2 className="font-sans text-xl font-bold">{(IndName.length > 0)? IndName : null }</h2>
                     <h3 className="font-sans text-lg">{(IndName.length && Disc.length > 0)? "Industry Bio" : null }</h3>
                     <p className='text-sm'>{(Disc.length > 0)? Disc :  <div className='flex flex-col items-center justify-center h-full gap-2'>
-                    {(IndName.length > 0)? null : (<div className='flex flex-col items-center justify-center h-full font-mono'><Image src={NoResults} alt='NO RESULTS' width={200} />NO RESULTS FOUND!</div>)}
+                    {(IndName.length > 0)? null : (<div className='z-0 flex flex-col items-center justify-center h-full font-mono'><Image src={NoResults} alt='NO RESULTS' width={200} />NO RESULTS FOUND!</div>)}
                     {(IndName.length > 0)? null : (<Button color="primary" size='md' onPress={onOpen}>Set Data</Button>)}
                     </div>}</p>
                 </div>

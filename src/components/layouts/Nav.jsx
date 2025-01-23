@@ -4,9 +4,10 @@ import { useState } from "react";
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
 import Menu from '../Images/menu.png';
 import emsLogo from "../Images/EMSlogo.jpg";
-
+import { motion} from "framer-motion";
 function Nav() {
   const [activeTab, setActiveTab] = useState("/");
+  const [show, setShow] = useState(false);
   
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
@@ -41,38 +42,29 @@ function Nav() {
     </div>
     </nav>
     <nav className="absolute top-0 left-0">  
-      <Button color="primary" onPress={onOpen} className="absolute flex items-center justify-center lg:hidden top-2 left-4" size="sm" variant="bordered"><img src={Menu} alt="Menu" className="w-4"/> </Button>
-    <Drawer isOpen={isOpen} onOpenChange={onOpenChange} placement="left" size="xs">
-
-        <DrawerContent className="flex flex-col h-full gap-3 pt-5 pl-8 pr-10 ">
-          {(onClose) => (
-            <>
-              <DrawerHeader className="flex flex-row items-center gap-1"><Image src={emsLogo} alt="EMS" width={80}/>EMS</DrawerHeader>
-              <Divider />
-              <DrawerBody>
-              {navItems.map((item) => (
+      <Button onPress={()=> setShow(!show)} color="primary" className="absolute flex items-center justify-center lg:hidden top-2 left-4" size="sm" variant="bordered"><img src={Menu} alt="Menu" className="w-4"/> </Button>
+      <motion.div 
+      initial={{x:-300}}
+      animate={(show)? {x:0}:{x:-300}}
+      transition={{type: "easeIn", duration: 0.3}}
+      className="fixed z-10 flex flex-col items-center justify-start w-auto h-full gap-3 pt-5 pl-8 pr-10 border-r-2 rounded bg-slrounded-md bg-slate-200">
+        <Button onPress={()=> setShow(false)} color="danger" className="absolute w-auto top-2 right-2" size="sm" variant="flat">X</Button>
+        <Image className="mt-7" src={emsLogo} alt="emslogo" width={80}/>
+        {navItems.map((item) => (
           <>
             <Button
               variant={activeTab === item.path ? "solid" : "bordered"}
               color={activeTab === item.path ? "primary" : "default"}
-              onPress={() => setActiveTab(item.path)}
+              onPress={() => {setActiveTab(item.path); setShow(false)}}
               className="w-full"
               >
-              <Link className="w-full" to={item.path}>
+              <Link to={item.path}>
                 {item.title}
               </Link>
             </Button>
           </>
         ))}
-              </DrawerBody>
-              <Divider/>
-              <DrawerFooter className="text-tiny">
-                Developed by Quddus | © 2021 EMS All Rights Reserved
-              </DrawerFooter>
-            </>
-          )}
-        </DrawerContent>
-      </Drawer>
+    </motion.div>
     </nav>
     </nav></>
   );
