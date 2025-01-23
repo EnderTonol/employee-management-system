@@ -1,5 +1,5 @@
 {
-  "name": "employee-manage",
+  "name": "employee-management-sysytem",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,12 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@nextui-org/react": "^2.6.10",
+    "@heroui/react": "^2.6.14",
     "apexcharts": "^4.3.0",
     "framer-motion": "^11.15.0",
     "react": "^18.3.1",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.1"
   },
   "devDependencies": {

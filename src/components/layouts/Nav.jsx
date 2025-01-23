@@ -1,36 +1,78 @@
+import { Button,useDisclosure, Divider } from "@heroui/react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Button,Navbar,NavbarBrand,NavbarItem,NavbarContent,Image } from "@nextui-org/react";
+import { useState } from "react";
+import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
 
-function Logo(){
-    return(
-    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-        clipRule="evenodd"
-        d="M17.6482 10.1305L15.8785 7.02583L7.02979 22.5499H10.5278L17.6482 10.1305ZM19.8798 14.0457L18.11 17.1983L19.394 19.4511H16.8453L15.1056 22.5499H24.7272L19.8798 14.0457Z"
-        fill="currentColor"
-        fillRule="evenodd"
-      />
-    </svg>
-    )
+function Nav() {
+  const [activeTab, setActiveTab] = useState("/");
+  
+  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+
+  const navItems = [
+    { key: 1, path: "/", title: "Dashboard" },
+    { key: 2, path: "/employees", title: "Employees" },
+    { key: 3, path: "/employees-data", title: "Manage" },
+    { key: 4, path: "/manage-events", title: "Event Manager" },
+    { key: 5, path: "/departments", title: "Departments" },
+  ];
+
+  return (
+    <>
+    <nav>
+    <nav className="hidden w-52 lg:flex">
+      <div className="fixed flex flex-col items-center justify-start w-auto h-full gap-3 pt-5 pl-8 pr-10 border-r-2 rounded bg-slrounded-md">
+        {navItems.map((item) => (
+          <>
+            <Button
+              variant={activeTab === item.path ? "solid" : "bordered"}
+              color={activeTab === item.path ? "primary" : "default"}
+              onPress={() => setActiveTab(item.path)}
+              className="w-full"
+              >
+              <Link to={item.path}>
+                {item.title}
+              </Link>
+            </Button>
+          </>
+        ))}
+    </div>
+    </nav>
+    <nav className="absolute top-0 left-0">  
+      <Button color="primary" onPress={onOpen} className="absolute block lg:hidden top-2 left-2" size="sm"> = </Button>
+    <Drawer isOpen={isOpen} onOpenChange={onOpenChange} placement="left" size="xs">
+
+        <DrawerContent className="flex flex-col h-full gap-3 pt-5 pl-8 pr-10 ">
+          {(onClose) => (
+            <>
+              <DrawerHeader className="flex flex-col gap-1">EMS!!</DrawerHeader>
+              <Divider />
+              <DrawerBody>
+              {navItems.map((item) => (
+          <>
+            <Button
+              variant={activeTab === item.path ? "solid" : "bordered"}
+              color={activeTab === item.path ? "primary" : "default"}
+              onPress={() => setActiveTab(item.path)}
+              className="w-full"
+              >
+              <Link className="w-full" to={item.path}>
+                {item.title}
+              </Link>
+            </Button>
+          </>
+        ))}
+              </DrawerBody>
+              <Divider/>
+              <DrawerFooter className="text-tiny">
+                Developed by Quddus | © 2021 EMS All Rights Reserved
+              </DrawerFooter>
+            </>
+          )}
+        </DrawerContent>
+      </Drawer>
+    </nav>
+    </nav></>
+  );
 }
 
-function Nav(){
-    return(
-        <>
-        <Navbar>
-            <NavbarBrand >
-                <Link to="/"><Logo/></Link>
-            </NavbarBrand>
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-            <Button variant="shadow"><Link to="/">Home</Link></Button>
-            <Button variant="shadow"><Link to="/employees">Manage Employees</Link></Button>
-            <Button variant="shadow"><Link to="/EmpData">Employees Data</Link></Button>
-            <Button variant="shadow"><Link to="/ManageEvents">Manage Events</Link></Button>
-            <Button variant="shadow"><Link to="/departments">Departments</Link></Button>
-        </NavbarContent>
-        </Navbar>
-        </>
-    )
-}
 export default Nav;

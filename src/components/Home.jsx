@@ -19,11 +19,11 @@ function Home() {
             element: <Layout><Employees /></Layout>
         },
         {
-            path: "/EmpData",
+            path: "/employees-data",
             element: <Layout><EmployeesShow /></Layout>
         },
         {
-            path: "/ManageEvents",
+            path: "/manage-events",
             element: <Layout><ManageEvents /></Layout>
         },
         {
@@ -42,10 +42,10 @@ function Home() {
 }
 
 const Layout = ({ children }) => (
-    <>
+    <div className="flex flex-row gap-2">
         <Nav />
         {children}
-    </>
+    </div>
 );
 
 export default Home;

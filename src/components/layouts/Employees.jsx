@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useContext } from "react";
-import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, ButtonGroup, Select, SelectItem } from "@nextui-org/react";
+import { Link } from "react-router-dom";
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell, ButtonGroup, Select, SelectItem } from "@heroui/react";
 import {
     Modal,
     ModalContent,
@@ -8,18 +9,19 @@ import {
     ModalBody,
     ModalFooter,
     useDisclosure,
-} from "@nextui-org/react";
-import { Form, Input, Button } from "@nextui-org/react";
+} from "@heroui/react";
+import { Form, Input, Button } from "@heroui/react";
 import { Employee_context } from "../Context";
 import NotFoundIcon from "../Images/not-found.png";
+
 
 function Employees() {
     // Modal Control
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     // Employee Form State
-    const [newEmployee, setNewEmployee] = useState({ name: "", id: "", department: "", jobTitle: "", salary: "" });
-
+    const [newEmployee, setNewEmployee] = useState({ name: "", id: "", department: "", jobTitle: "", salary: "", JobType: "" });
+    const JobType = ['Manager','Assistant','Admin','Worker','Employee'];
     // Context Access
     const context = useContext(Employee_context);
     if (!context) {
@@ -40,19 +42,34 @@ function Employees() {
     };
 
     return ( 
-        <div>
-        <motion.h1 className="text-xl font-sans font-bold mb-1">Employees</motion.h1>
-        <Button color="primary" variant="shadow" onPress={onOpen}>Add Employee</Button>
+        <div className="p-2 grow">
+        <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Employees</motion.h1>
+    {employees.length !== 0 ? ( <Button color="primary" onPress={onOpen}>Add Employee</Button>) : null}
         {/* Employee Modal */}
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
                     <ModalContent>
                         {(onClose) => (
                             <>
                                 <ModalHeader className="flex flex-col gap-1">Add Employee</ModalHeader>
                                 <ModalBody>
                                     <Form>
-                                        <Input isRequired label="Employee Name" type="text" name="name" placeholder="e.g. Abdullah" onChange={handleInputChange} />
-                                        <Input isRequired label="ID Number" type="text" name="id" placeholder="e.g. 1I01" onChange={handleInputChange} />
+                                        <Input isRequired label="Employee Name" type="text" name="name" onChange={handleInputChange} />
+                                        <Input isRequired label="ID Number" type="text" name="id"  onChange={handleInputChange} />
+                                        <Select
+                                          label="Job Post"
+                                          name="JobType"
+                                          placeholder="Select Job Post"
+                                        >
+                                            {
+                                                JobType.map((member,index)=>(
+                                                <SelectItem key={index+1} value={member} onPress={() => setNewEmployee((prev) => ({ ...prev, JobType: member }))} >
+                                                    {member}
+                                                </SelectItem>
+                                                ))
+                                            }
+                                        </Select>
+                                        <Input onChange={handleInputChange} label="Email" name="Email"/>
+                                        <Input onChange={handleInputChange} label="Tel" name="Tel"/>
                                         <Select
                                             label="Department"
                                             name="department"
@@ -64,11 +81,12 @@ function Employees() {
                                                 </SelectItem>
                                             ))}
                                         </Select>
-                                        <Input isRequired label="Job Title" type="text" name="jobTitle" placeholder="e.g. IT Assistant" onChange={handleInputChange} />
-                                        <Input isRequired label="Salary" type="number" name="salary" placeholder="e.g. 10000" onChange={handleInputChange} />
+                                        <Input isRequired label="Job Title" type="text" name="jobTitle" onChange={handleInputChange} />
+                                        <Input isRequired label="Salary" type="number" name="salary" onChange={handleInputChange} />
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
+                                    <Button color="primary" variant="flat"><Link to="/departments">Quick Department</Link></Button>
                                     <Button color="danger" variant="ghost" onPress={onClose}>Discard</Button>
                                     <Button color="primary" onPress={handleSubmit}>Submit</Button>
                                 </ModalFooter>
@@ -78,15 +96,14 @@ function Employees() {
                 </Modal>
         {
         employees.length !== 0 ? (
-            <motion.div className="m-2 rounded-3xl bg-slate-100 p-2">
+            <motion.div className="p-2 mt-2 rounded-3xl bg-slate-100">
                 {/* Employee Table */}
                 {employees.length !== 0 &&
-                    <Table className="mt-3">
+                    <Table isStriped >
                         <TableHeader>
                             <TableColumn>Name</TableColumn>
-                            <TableColumn>ID</TableColumn>
                             <TableColumn>Department</TableColumn>
-                            <TableColumn>Job Title</TableColumn>
+                            <TableColumn>Post</TableColumn>
                             <TableColumn>Salary</TableColumn>
                             <TableColumn>Action</TableColumn>
                         </TableHeader>
@@ -94,15 +111,11 @@ function Employees() {
                             {employees.map((employee, idx) => (
                                 <TableRow key={employee.id}>
                                     <TableCell>{employee.name}</TableCell>
-                                    <TableCell>{employee.id}</TableCell>
                                     <TableCell>{employee.department}</TableCell>
-                                    <TableCell>{employee.jobTitle}</TableCell>
+                                    <TableCell>{employee.JobType}</TableCell>
                                     <TableCell>{employee.salary}</TableCell>
                                     <TableCell>
-                                        <ButtonGroup>
-                                            <Button onPress={() => setEmployees(employees.filter((item, index) => index !== idx))} color="danger">Delete</Button>
-                                            <Button color="primary" variant="flat">Edit</Button>
-                                        </ButtonGroup>
+                                            <Button onPress={() => setEmployees(employees.filter((item, index) => index !== idx))} color="danger">Delete</Button>                                           
                                     </TableCell>
                                 </TableRow>
                             ))}
@@ -111,9 +124,10 @@ function Employees() {
                 }
             </motion.div>
         ) : (
-            <div className="flex flex-col items-center justify-center h-full w-full">
+            <div className="flex flex-col items-center justify-center w-full h-full">
             <motion.img src={NotFoundIcon} alt="Not Found" className="h-[250px] w-[250px] mt-10" />
-            <h1 className="text-xl font-sans font-bold">No Employees Found</h1>
+            <h1 className="mb-4 font-sans text-xl font-bold">No Employees Found</h1>
+            <Button color="primary" variant="shadow" onPress={onOpen}>Add Employee</Button>
             </div>
         )
         }
