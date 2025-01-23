@@ -180,7 +180,7 @@ function Manage() {
                     </ModalContent>
                 </Modal>
                 <div className="flex flex-col gap-2 mt-3">
-                    <motion.h1 className="mb-1 font-sans text-2xl font-bold text-left">
+                    <motion.h1 className="mb-1 font-sans text-2xl font-bold text-left pl-16">
                         Meeting Manager
                     </motion.h1>
                 </div>
@@ -235,6 +235,9 @@ function Manage() {
                     </div>
                 )}
                 <div className="mt-3">
+                <motion.h1 className="mb-1 font-sans text-2xl font-bold text-left">
+                        To-do Manager
+                    </motion.h1>
                     <Form
                         onSubmit={handleS}
                         className="flex flex-row items-center justify-center gap-2 mt-6 mb-2"

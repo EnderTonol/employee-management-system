@@ -127,7 +127,7 @@ function DashBoard() {
                     <h2 className="font-sans text-xl font-bold">{(IndName.length > 0)? IndName : null }</h2>
                     <h3 className="font-sans text-lg">{(IndName.length && Disc.length > 0)? "Industry Bio" : null }</h3>
                     <p className='text-sm'>{(Disc.length > 0)? Disc :  <div className='flex flex-col items-center justify-center h-full gap-2'>
-                    {(IndName.length > 0)? null : (<Image src={NoResults} alt='NO RESULTS' width={200} />)}
+                    {(IndName.length > 0)? null : (<div className='flex flex-col items-center justify-center h-full font-mono'><Image src={NoResults} alt='NO RESULTS' width={200} />NO RESULTS FOUND!</div>)}
                     {(IndName.length > 0)? null : (<Button color="primary" size='md' onPress={onOpen}>Set Data</Button>)}
                     </div>}</p>
                 </div>
@@ -160,7 +160,7 @@ function DashBoard() {
                             }
                         </TableBody>
                     </Table>
-                    ) : <div className='flex items-center justify-center h-full'><Image src={NoResults} alt='NO RESULTS' width={200} /></div>
+                    ) : <div className='flex flex-col items-center justify-center h-full font-mono'><Image src={NoResults} alt='NO RESULTS' width={200} />NO RESULTS FOUND!</div>
                 }
                 </div>
                 <div className="bg-slate-300 rounded-md p-2 w-full overflow-y-auto h-[300px]">
@@ -183,7 +183,7 @@ function DashBoard() {
                             }
                         </TableBody>
                     </Table>
-                    ) : (<div className='flex items-center justify-center h-full'><Image src={NoResults} alt='NO RESULTS' width={200} /></div>)
+                    ) : (<div className='flex flex-col items-center justify-center h-full font-mono'><Image src={NoResults} alt='NO RESULTS' width={200} />NO RESULTS FOUND!</div>)
                 }
                 </div>
                 <div className="bg-slate-300 rounded-md p-3 w-auto h-[300px]">
@@ -191,7 +191,7 @@ function DashBoard() {
                 </div>
             </motion.div>
                 <div className='flex items-center w-full h-auto p-4 mt-2 font-mono rounded-md bg-slate-300'>
-                © 2021 EMS All Rights Reserved | Developed by&nbsp;<Link href=''>Abdul Quddus</Link>
+                © 2021 EMS All Rights Reserved | Developed by&nbsp;<Link href='https://github.com/EnderTonol'>Abdul Quddus</Link>
                 </div>
         </div>
     );
