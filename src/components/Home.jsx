@@ -1,9 +1,10 @@
-import Nav from "./layouts/Nav";
-import Dashboard from "./layouts/Dashboard";
-import Employees from "./layouts/Employees";
-import EmployeesShow from "./layouts/EmployeesShow";
-import Departments from "./layouts/Departments";
-import ManageEvents from "./layouts/Manage";
+import React from "react";
+const Nav = React.lazy(()=> import('./layouts/Nav'))
+const Dashboard = React.lazy(()=> import('./layouts/Dashboard'))
+const Employees = React.lazy(()=> import('./layouts/Employees'))
+const EmployeesShow = React.lazy(()=> import('./layouts/EmployeesShow'))
+const Departments = React.lazy(()=> import('./layouts/Departments'))
+const ManageEvents = React.lazy(()=> import('./layouts/Manage'))
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Context";
 

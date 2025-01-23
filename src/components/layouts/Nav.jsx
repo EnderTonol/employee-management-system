@@ -4,6 +4,7 @@ import { useState } from "react";
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
 import Menu from '../Images/menu.png';
 import emsLogo from "../Images/EMSlogo.jpg";
+
 function Nav() {
   const [activeTab, setActiveTab] = useState("/");
   
@@ -40,13 +41,13 @@ function Nav() {
     </div>
     </nav>
     <nav className="absolute top-0 left-0">  
-      <Button color="primary" onPress={onOpen} className="absolute lg:hidden top-2 left-4 flex items-center justify-center" size="sm" variant="bordered"><img src={Menu} alt="Menu" className="w-4"/> </Button>
+      <Button color="primary" onPress={onOpen} className="absolute flex items-center justify-center lg:hidden top-2 left-4" size="sm" variant="bordered"><img src={Menu} alt="Menu" className="w-4"/> </Button>
     <Drawer isOpen={isOpen} onOpenChange={onOpenChange} placement="left" size="xs">
 
         <DrawerContent className="flex flex-col h-full gap-3 pt-5 pl-8 pr-10 ">
           {(onClose) => (
             <>
-              <DrawerHeader className="flex flex-row gap-1 items-center"><Image src={emsLogo} alt="EMS" width={80}/>EMS</DrawerHeader>
+              <DrawerHeader className="flex flex-row items-center gap-1"><Image src={emsLogo} alt="EMS" width={80}/>EMS</DrawerHeader>
               <Divider />
               <DrawerBody>
               {navItems.map((item) => (

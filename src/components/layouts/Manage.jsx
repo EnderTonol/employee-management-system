@@ -30,7 +30,7 @@ import {
 } from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 
-function Manage() {
+function ManageEvents() {
     const { Meeting, setMeeting, departments, Todo, setTodo } = useContext(Employee_context);
 
     const [NwMeeting, setNwMeeting] = useState({
@@ -180,7 +180,7 @@ function Manage() {
                     </ModalContent>
                 </Modal>
                 <div className="flex flex-col gap-2 mt-3">
-                    <motion.h1 className="mb-1 font-sans text-2xl font-bold text-left pl-16">
+                    <motion.h1 className="pl-16 mb-1 font-sans text-2xl font-bold text-left">
                         Meeting Manager
                     </motion.h1>
                 </div>
@@ -284,4 +284,4 @@ function Manage() {
     );
 }
 
-export default Manage;
+export default ManageEvents;
