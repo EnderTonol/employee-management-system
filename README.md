@@ -8,12 +8,16 @@ An intuitive **Employee Management System (EMS)** built using **modern frontend 
 - 🌐 **[React Router](https://reactrouter.com/)** – Seamless navigation
 - 🔄 **[Context API](https://react.dev/reference/react/useContext)** – State management
 
-## ✨ Features
-✅ **Add, update, and manage employees**  
-✅ **Department-wise employee classification**  
-✅ **Interactive UI with smooth transitions**  
-✅ **Responsive design for all devices**  
-✅ **No backend required! Purely frontend-based**  
+## ✨ Features  
+
+| Feature                            | Description                                      |
+|------------------------------------|--------------------------------------------------|
+| ✅ Employee Management             | Add, update, and manage employees efficiently   |
+| 🏢 Department Classification       | Organize employees by departments               |
+| 🎨 Interactive UI                  | Smooth transitions and animations with Framer Motion |
+| 📱 Responsive Design               | Works across all devices (mobile, tablet, desktop) |
+| ⚡ Backend-Free                     | Fully frontend-based, no backend required       |
+
 
 ## 🎯 Why EMS?
 This EMS is perfect for small to mid-sized organizations looking for a simple yet effective **frontend-only** employee management solution.
