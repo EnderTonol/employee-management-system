@@ -167,7 +167,7 @@ function ManageEvents() {
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" onPress={handleSubmit}>
-                                        Click
+                                        Submit
                                     </Button>
                                 </ModalFooter>
                             </div>

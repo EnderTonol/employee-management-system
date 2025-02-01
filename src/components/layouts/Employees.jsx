@@ -78,8 +78,8 @@ function Employees() {
                                             placeholder="Select Department"
                                         >
                                             {departments.map((department) => (
-                                                <SelectItem key={department.name} value={department.name} onPress={() => setNewEmployee((prev) => ({ ...prev, department: department.name }))} >
-                                                    {department.name}
+                                                <SelectItem key={department.Name} value={department.Name} onPress={() => setNewEmployee((prev) => ({ ...prev, department: department.Name }))} >
+                                                    {department.Name}
                                                 </SelectItem>
                                             ))}
                                         </Select>
@@ -107,7 +107,6 @@ function Employees() {
                             <TableColumn>Department</TableColumn>
                             <TableColumn>Post</TableColumn>
                             <TableColumn>Salary</TableColumn>
-                            <TableColumn>Action</TableColumn>
                         </TableHeader>
                         <TableBody>
                             {employees.map((employee, idx) => (
@@ -116,9 +115,6 @@ function Employees() {
                                     <TableCell>{employee.department}</TableCell>
                                     <TableCell>{employee.JobType}</TableCell>
                                     <TableCell>{employee.salary}</TableCell>
-                                    <TableCell>
-                                            <Button onPress={() => setEmployees(employees.filter((item, index) => index !== idx))} color="danger">Delete</Button>                                           
-                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

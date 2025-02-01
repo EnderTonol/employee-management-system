@@ -8,12 +8,16 @@ export default function ContextProvider({ children }) {
     const [EmployeesName, setEmployeesName] = useState([]);
     const [Meeting,setMeeting] = useState([]);
     const [Todo,setTodo] = useState([]);
+    const [indname,setIndname] = useState("");
+    const [disc, setDisc] = useState("");
     
     useEffect(() => {
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];
         const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];
         const FetchMeeting = JSON.parse(sessionStorage.getItem("Meeting"))|| [];
         const FetchTodos = JSON.parse(sessionStorage.getItem("Todos")) || [];
+        const FetchName = JSON.parse(sessionStorage.getItem("indname")) || "";
+        const FetchDisc = JSON.parse(sessionStorage.getItem('disc')) || ""
         if (FetchData) {
             setEmployees(FetchData);
             setEmployeesName(FetchData.map(employee => employee.name));
@@ -26,6 +30,12 @@ export default function ContextProvider({ children }) {
         }
         if(FetchTodos){
             setTodo(FetchTodos);
+        }
+        if(FetchName){
+            setIndname(FetchName);
+        }
+        if(FetchDisc){
+            setDisc(FetchDisc);
         }
     }, []);
 
@@ -49,8 +59,16 @@ export default function ContextProvider({ children }) {
         sessionStorage.setItem("Todos", JSON.stringify(Todo));
     },[Todo]);
 
+    useEffect(()=>{
+        sessionStorage.setItem("IndName", JSON.stringify(indname));
+    },[indname]);
+
+    useEffect(()=>{
+        sessionStorage.setItem("Disc", JSON.stringify(disc));
+    },[disc]);
+
     return (
-        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, Todo, setTodo }}>
+        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, Todo, setTodo, indname, setIndname, disc, setDisc }}>
             {children}
         </Employee_context.Provider>
     );

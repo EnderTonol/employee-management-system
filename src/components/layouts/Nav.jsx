@@ -1,4 +1,4 @@
-import { Button,useDisclosure, Divider,Image } from "@heroui/react";
+import { Button,useDisclosure, Divider,Image,Alert } from "@heroui/react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
@@ -40,6 +40,7 @@ function Nav() {
           </>
         ))}
     </div>
+    
     </nav>
     </nav></>
   );
