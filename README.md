@@ -19,7 +19,31 @@ An intuitive **Employee Management System (EMS)** built using **modern frontend 
 This EMS is perfect for small to mid-sized organizations looking for a simple yet effective **frontend-only** employee management solution.
 
 ## 📸 Screenshots
-(You can add images here if needed)
+### Initial UI
+![Alt Text](./src/assets/scrs/noF1.png)
+![Alt Text](./src/assets/scrs/noF2.png)
+![Alt Text](./src/assets/scrs/noF3.png)
+![Alt Text](./src/assets/scrs/noF4.png)
+![Alt Text](./src/assets/scrs/noF5.png)
+
+### Input Fields UI
+![Alt Text](./src/assets/scrs/inp1.png)
+![Alt Text](./src/assets/scrs/inp2.png)
+![Alt Text](./src/assets/scrs/inp3.png)
+![Alt Text](./src/assets/scrs/inp4.png)
+
+### Data Intered UI 
+![Alt Text](./src/assets/scrs/fl1.png)
+![Alt Text](./src/assets/scrs/fl2.png)
+![Alt Text](./src/assets/scrs/fl3.png)
+![Alt Text](./src/assets/scrs/fl4.png)
+
+### Mobile UI
+![Alt Text](./src/assets/scrs/mob.png)
+
+
+
+
 
 ## 🚀 How to Run
 1️⃣ Clone the repo:  
@@ -31,4 +55,8 @@ This EMS is perfect for small to mid-sized organizations looking for a simple ye
 ```bash
    npm start
 ```
+
+#### How Bug Fixes
+- Using ChatGPT 🤣 for SessionStorage
+- Netlify Pages Navigation Bug Fixes
 
