@@ -16,29 +16,28 @@ import NotFoundIcon from "../Images/not-found.png";
 
 
 function Employees() {
-    // Modal Control
+    
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-    // Employee Form State
+ 
     const [newEmployee, setNewEmployee] = useState({ name: "", id: "", department: "", jobTitle: "", salary: "", JobType: "" });
     const JobType = ['Manager','Assistant','Admin','Worker','Employee'];
-    // Context Access
+    
     const context = useContext(Employee_context);
     if (!context) {
         throw new Error("Employees component must be wrapped within a ContextProvider");
     }
     const { employees, setEmployees, departments, setDepartments } = context;
 
-    // Employee Input Handler
+  
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setNewEmployee((prev) => ({ ...prev, [name]: value }));
     };
 
-    // Add Employee
     const handleSubmit = () => {
         setEmployees((prev) => [...prev, newEmployee]);
-        onOpenChange(false); // Close the modal
+        onOpenChange(false); 
     };
 
     return ( 
@@ -48,7 +47,7 @@ function Employees() {
         >
         <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Employees</motion.h1>
     {employees.length !== 0 ? ( <Button color="primary" onPress={onOpen}>Add Employee</Button>) : null}
-        {/* Employee Modal */}
+      
         <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
                     <ModalContent>
                         {(onClose) => (
@@ -100,7 +99,7 @@ function Employees() {
         {
         employees.length !== 0 ? (
             <motion.div className="p-2 mt-2 rounded-3xl bg-slate-100">
-                {/* Employee Table */}
+              
                 {employees.length !== 0 &&
                     <Table isStriped >
                         <TableHeader>

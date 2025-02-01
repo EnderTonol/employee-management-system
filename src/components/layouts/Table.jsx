@@ -31,14 +31,14 @@ function Table1(){
                     <Table>
                         <TableHeader>
                             <TableColumn>Department</TableColumn>
-                            <TableColumn>Created On</TableColumn>
+                            <TableColumn>Email</TableColumn>
                         </TableHeader>
                         <TableBody>
                             {
                                 Departments.map((department, index) => (
                                     <TableRow key={index}>
-                                        <TableCell>{department.name}</TableCell>
-                                        <TableCell>{department.createdAt}</TableCell>
+                                        <TableCell>{department.Name}</TableCell>
+                                        <TableCell>{department.Email}</TableCell>
                                     </TableRow>
                                 ))
                             }

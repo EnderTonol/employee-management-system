@@ -33,7 +33,7 @@ function ManageEvents() {
         MeetingTime: "",
         MeetingLocation: "",
         MeetingDescription: "",
-        MeetingParticipants: "",
+        MeetingDepartment: "",
     });
 
     const [NewTodo, setNewTodo] = useState({ todo: "", Done: false });
@@ -148,21 +148,19 @@ function ManageEvents() {
                                     />
                                     <Select
                                         label="Departments"
-                                        name="Department"
                                         placeholder="Select Departments"
                                     >
                                         {departments.map((dep, index) => (
                                             <SelectItem
                                                 key={index}
-                                                value={dep}
                                                 onPress={() =>
                                                     setNwMeeting((prev) => ({
                                                         ...prev,
-                                                        Department: dep.name,
+                                                        MeetingDepartment: dep.Name,
                                                     }))
                                                 }
                                             >
-                                                {dep.name}
+                                                {dep.Name}
                                             </SelectItem>
                                         ))}
                                     </Select>
@@ -185,12 +183,12 @@ function ManageEvents() {
 
             <div className="p-2">
                 {Meeting.length > 0 ? (
-                    <Button onPress={onOpen} color="primary" className="mb-2">
+                    <Button onPress={onOpen} color="primary" className="mb-2 w-full">
                         New Meeting
                     </Button>
                 ) : (
                     <div className="flex items-center justify-center">
-                        <Button onPress={onOpen} color="primary" variant="flat">
+                        <Button onPress={onOpen} color="primary" variant="flat" className="w-full">
                             Add Meeting
                         </Button>
                     </div>
@@ -203,7 +201,7 @@ function ManageEvents() {
                                         <CardHeader className="flex flex-col items-start">
                                             <p className="text-sm">id: {"#" + (index + 1)}</p>
                                             <p className="text-lg font-medium">{meeting.MeetingName}</p>
-                                            <p className="text-xs">Department: {meeting.Department}</p>
+                                            <p className="text-xs">Department: {meeting.MeetingDepartment}</p>
                                         </CardHeader>
                                         <Divider />
                                         <CardBody>

@@ -11,24 +11,22 @@ import EditIcon from "../Images/edit.png";
 import Table1 from "./Table";
 
 function DashBoard() {
-    //Employee Salary
+
     const [empSal, setEmpSal] = useState([]);
     const [empName, setEmpName] = useState([]);
     const [AmountEmp, setAmountEmp] = useState();
 
-    //Industry Name
     const [IndName,setIndName] = useState("");
     const [newIndName,setNewIndName] = useState("");
 
-    //Industry Bio
     const [Disc,setDisc] = useState("");
     const [newDisc,setNewDisc] = useState("");
 
-    //Meeting Data
+   
     const [meeting,setmeeting] = useState([]);
 
     
-    //Modal control
+   
     const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
    
@@ -38,13 +36,7 @@ function DashBoard() {
     }
     const { employees, Meeting } = context;
 
-    useEffect(()=>{
-        const fetchData = localStorage.getItem("Meeting");
-        if(fetchData){
-            const FetchParsed = JSON.parse(fetchData);
-            setmeeting(FetchParsed);
-        }
-    },[Meeting]);
+    
 
     useEffect(()=>{
         const fetchData = localStorage.getItem("Meeting");
@@ -134,7 +126,7 @@ function DashBoard() {
                 <div className="bg-slate-300 rounded-md p-2 w-full h-[300px]">
                     <h1 className='mb-2 font-sans text-xl font-bold'>Meetings</h1>
                 {
-                        (meeting.length > 0)?
+                        (Meeting.length > 0)?
                     (
                     <Table isStriped>
                         <TableHeader>
@@ -144,7 +136,7 @@ function DashBoard() {
                         </TableHeader>
                         <TableBody>
                             {
-                            meeting.map((itm,index)=>(
+                            Meeting.map((itm,index)=>(
                                 <TableRow key={index+1}>
                                     <TableCell>{index+1}</TableCell>
                                     <TableCell>{itm.MeetingName}</TableCell>
