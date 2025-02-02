@@ -3,9 +3,9 @@
 An intuitive **Employee Management System (EMS)** built using **modern frontend technologies** for efficient workforce management.
 
 ## 🛠️ Tech Stack
-- 🎨 **[HeroUI](https://www.heroui.dev/)** – Beautiful UI components
+- 🎨 **[HeroUI](https://www.heroui.com/)** – Beautiful UI components
 - 🎭 **[Framer Motion](https://www.framer.com/motion/)** – Smooth animations
-- 🌐 **[React Router](https://reactrouter.com/)** – Seamless navigation
+- 🌐 **[React Router - v6](https://reactrouter.com/)** – Seamless navigation
 - 🔄 **[Context API](https://react.dev/reference/react/useContext)** – State management
 
 ## ✨ Features

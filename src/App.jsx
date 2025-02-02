@@ -5,7 +5,7 @@ const Home = React.lazy(()=> import('./components/Home'));
 function App() {
   return (
     <>
-    <Suspense fallback={<div className="flex h-[100vh] items-center justifiy-center"><Spinner color='primary'/><p className='font-mono font-bold'>Please Wait</p></div>}>
+    <Suspense fallback={<div className="flex flex-col gap-2 h-[100vh] items-center justify-center"><Spinner color='primary'/><p className='font-mono font-bold'>Please Wait</p></div>}>
     <Home />
     </Suspense>
     </>

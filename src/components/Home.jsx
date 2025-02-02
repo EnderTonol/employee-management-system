@@ -45,8 +45,8 @@ function Home() {
 const Layout = ({ children }) => (
     <>
     <div className="flex flex-col items-center justify-center w-full h-full mt-12 lg:hidden"> 
-           <p className="font-sans text-center font-2xl">YOU NEED LAGER SCREEN!</p>
-           <p className="font-mono text-tiny">FOR RUN SITE!!! THAN YOUR DEVICE</p>
+           <p className="font-sans text-center font-3xl">YOU NEED LARGER SCREEN!</p>
+           <p className="font-mono text-medium">FOR RUN SITE!!! THAN YOUR DEVICE</p>
     </div>
     <div className="hidden lg:flex">
         <Nav />
