@@ -15,7 +15,7 @@ An intuitive **Employee Management System (EMS)** built using **modern frontend 
 | ✅ Employee Management             | Add, update, and manage employees efficiently   |
 | 🏢 Department Classification       | Organize employees by departments               |
 | 🎨 Interactive UI                  | Smooth transitions and animations with Framer Motion |
-| 📱 Responsive Design               | Works across all devices (mobile, tablet, desktop) |
+| 📱 Responsive Design               | Works across one device only (desktop) |
 | ⚡ Backend-Free                     | Fully frontend-based, no backend required       |
 
 
@@ -46,18 +46,15 @@ This EMS is perfect for small to mid-sized organizations looking for a simple ye
 ![Alt Text](./src/assets/scrs/mob.png)
 
 
-
-
-
 ## 🚀 How to Run
 1️⃣ Clone the repo:  
    ```bash
-   git clone https://github.com/EnderTonol/employee-management-system
-   cd employee-management-system
+git clone https://github.com/EnderTonol/employee-management-system
+cd employee-management-system
 ```
 ✨Run Project
 ```bash
-   npm start
+npm start
 ```
 
 #### How Bug Fixes
