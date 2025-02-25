@@ -1,22 +1,169 @@
 import { motion } from "framer-motion";
-import { Card, CardBody, CardFooter, CardHeader, Divider, Button, Chip } from "@heroui/react";
-import { useContext } from "react";
+import { Card, CardBody, CardFooter, CardHeader, Divider, Button, Chip, Form, ButtonGroup } from "@heroui/react";
+import { useContext, useState } from "react";
+import {
+    Modal,
+    ModalContent,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    useDisclosure,
+    Select,
+    SelectItem,
+    Input
+} from "@heroui/react";
 import NotFoundIcon from "../Images/not-found.png";
 import { Link } from "react-router-dom";
 import { Employee_context } from "../Context";
 
 function EmployeesShow() {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [editIndex, setEditIndex] = useState(null);
+    const [newEmployee, setNewEmployee] = useState({
+        name: "",
+        id: "",
+        department: "",
+        jobTitle: "",
+        salary: "",
+        JobType: "",
+        Email: "",
+        Tel: ""
+    });
+    
+    const JobType = ['Manager','Assistant','Admin','Worker','Employee'];
     const context = useContext(Employee_context);
+    
     if (!context) {
         throw new Error("Employees component must be wrapped within a ContextProvider");
     }
-    const { employees, setEmployees } = context;
+    
+    const { employees, setEmployees, departments } = context;
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setNewEmployee(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleSubmit = () => {
+        if (editIndex !== null) {
+            if (
+                !newEmployee.name ||
+                !newEmployee.id ||
+                !newEmployee.jobTitle ||
+                !newEmployee.salary
+            ) {
+                alert("Please fill out all required fields.");
+                return; // Stop submission if validation fails
+            }
+            setEmployees(prev => {
+                const updated = [...prev];
+                updated[editIndex] = newEmployee;
+                return updated;
+            });
+        }
+        if (
+            !newEmployee.name ||
+            !newEmployee.id ||
+            !newEmployee.jobTitle ||
+            !newEmployee.salary
+        ) {
+            alert("Please fill out all required fields.");
+            return; // Stop Kare Ga Submition ko
+        }
+            
+            setNewEmployee({
+                name: "",
+                id: "",
+                department: "",
+                jobTitle: "",
+                salary: "",
+                JobType: "",
+                Email: "",
+                Tel: ""
+            });
+            setEditIndex(null);
+            onOpenChange(false);
+    };
+
+    const handleEdit = (index) => {
+        setEditIndex(index);
+        setNewEmployee(employees[index]);
+        onOpen();
+    };
 
     return employees.length !== 0 ? (
         <motion.div className="p-2 m-2"
-        initial={{opacity: 0, y: -10}}
-        animate={{opacity: 1, y: 0}}
+            initial={{opacity: 0, y: -10}}
+            animate={{opacity: 1, y: 0}}
         >
+            <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
+                <ModalContent>
+                    {(onClose) => (
+                        <>
+                            <ModalHeader>
+                                Edit Employee
+                            </ModalHeader>
+                            <ModalBody>
+                                <Form className="flex flex-col gap-2">
+                                    <Input label="Employee Name" name="name" 
+                                        value={newEmployee.name} onChange={handleInputChange} />
+                                    <Input label="ID Number" name="id"  
+                                        value={newEmployee.id} onChange={handleInputChange} />
+                                    <Select
+                                        label="Job Post"
+                                        placeholder="Select Job Post"
+                                        selectedKeys={newEmployee.JobType ? [newEmployee.JobType] : []}
+                                        onSelectionChange={(keys) => {
+                                            const keyArray = Array.from(keys);
+                                            setNewEmployee(prev => ({ ...prev, JobType: keyArray[0] }));
+                                        }}
+                                    >
+                                        {JobType.map((member) => (
+                                            <SelectItem key={member} value={member}>
+                                                {member}
+                                            </SelectItem>
+                                        ))}
+                                    </Select>
+                                    <Input label="Email" name="Email" 
+                                        value={newEmployee.Email} onChange={handleInputChange} />
+                                    <Input label="Tel" name="Tel" 
+                                        value={newEmployee.Tel} onChange={handleInputChange} />
+                                    <Select
+                                        label="Department"
+                                        placeholder="Select Department"
+                                        selectedKeys={newEmployee.department ? [newEmployee.department] : []}
+                                        onSelectionChange={(keys) => {
+                                            const keyArray = Array.from(keys);
+                                            setNewEmployee(prev => ({ ...prev, department: keyArray[0] }));
+                                        }}
+                                    >
+                                        {departments.map((department) => (
+                                            <SelectItem key={department.Name} value={department.Name}>
+                                                {department.Name}
+                                            </SelectItem>
+                                        ))}
+                                    </Select>
+                                    <Input label="Job Title" name="jobTitle" 
+                                        value={newEmployee.jobTitle} onChange={handleInputChange} />
+                                    <Input label="Salary" type="number" name="salary" 
+                                        value={newEmployee.salary} onChange={handleInputChange} />
+                                </Form>
+                            </ModalBody>
+                            <ModalFooter>
+                                <ButtonGroup>
+                                <Button color="danger" variant="flat" onPress={onClose}>
+                                    Cancel
+                                </Button>
+                                <Button color="primary" onPress={handleSubmit}>
+                                    Save Changes
+                                </Button>
+                                </ButtonGroup>
+                            </ModalFooter>
+                        </>
+                    )}
+                </ModalContent>
+            </Modal>
+
             <motion.div>
                 <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">
                     Employees DataSets
@@ -39,21 +186,28 @@ function EmployeesShow() {
                             <p>Job Title: {employee.jobTitle}</p>
                             <p>Post: {employee.JobType}</p>
                             <p>Salary: {employee.salary}</p>
-                        </CardBody>
-                        <Divider />
-                        <CardFooter className="flex flex-row justify-between">
                             <div className="flex flex-col">
                                 <p>Email: {employee.Email}</p>
                                 <p>Tel: {employee.Tel}</p>
                             </div>
-                            <Button
-                                onPress={() =>
-                                    setEmployees(employees.filter((_, index) => index !== idx))
-                                }
-                                color="danger"
-                            >
-                                Delete
-                            </Button>
+                        </CardBody>
+                        <Divider />
+                        <CardFooter className="flex">
+                            <p className="grow"></p>
+                                <ButtonGroup>
+                                <Button
+                                    color="danger"
+                                    variant="flat"
+                                    onPress={() =>
+                                        setEmployees(employees.filter((_, index) => index !== idx))
+                                    }
+                                >
+                                    Delete
+                                </Button>
+                                <Button color="primary" onPress={() => handleEdit(idx)}>
+                                    Edit
+                                </Button>
+                                </ButtonGroup>
                         </CardFooter>
                     </Card>
                 ))}

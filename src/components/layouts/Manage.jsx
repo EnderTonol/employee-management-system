@@ -46,6 +46,7 @@ function ManageEvents() {
     };
 
     const handleSubmit = () => {
+        
         setMeeting((prev) => [...prev, NwMeeting]);
         onOpenChange(false);
     };
@@ -183,7 +184,7 @@ function ManageEvents() {
 
             <div className="p-2">
                 {Meeting.length > 0 ? (
-                    <Button onPress={onOpen} color="primary" className="mb-2 w-full">
+                    <Button onPress={onOpen} color="primary" className="w-full mb-2">
                         New Meeting
                     </Button>
                 ) : (
@@ -258,6 +259,9 @@ function ManageEvents() {
                                                 <Button onPress={() =>setTodo(Todo.filter((_, index) => index !== idx ))}color="danger">
                                                     Delete
                                                 </Button>
+                                                <Button>
+                                                    Edit
+                                                </Button>
                                     </div>
                                     <Divider/>
                                     </>
@@ -270,7 +274,7 @@ function ManageEvents() {
                             </CardHeader>
                             <CardBody >
                                 <p className="text-center">No task yet</p><br/>
-                                <p className="text-center">Add your To-dos and Keep track of them accross Ninty Workspace</p>
+                                <p className="text-center">Add your To-dos and Keep track of them accross EMS</p>
                             </CardBody>
                             </Card>)}
                 </div>

@@ -36,6 +36,15 @@ function Employees() {
     };
 
     const handleSubmit = () => {
+        if (
+            !newEmployee.name ||
+            !newEmployee.id ||
+            !newEmployee.jobTitle ||
+            !newEmployee.salary
+        ) {
+            alert("Please fill out all required fields.");
+            return; // Stop submission if validation fails
+        }
         setEmployees((prev) => [...prev, newEmployee]);
         onOpenChange(false); 
     };
@@ -88,10 +97,13 @@ function Employees() {
                                     </Form>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button color="primary" variant="flat"><Link to="/departments">Quick Department</Link></Button>
-                                    <Button color="danger" variant="ghost" onPress={onClose}>Discard</Button>
-                                    <Button color="primary" onPress={handleSubmit}>Submit</Button>
+                                    <ButtonGroup>
+                                        <Button color="primary" variant="flat"><Link to="/departments">Departments</Link></Button>
+                                        <Button color="danger" variant="flat" onPress={onClose}>Discard</Button>
+                                        <Button color="primary" onPress={handleSubmit}>Submit</Button>
+                                    </ButtonGroup>
                                 </ModalFooter>
+                                
                             </>
                         )}
                     </ModalContent>
