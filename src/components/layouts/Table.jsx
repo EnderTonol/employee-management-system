@@ -1,4 +1,4 @@
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Image } from '@heroui/react';
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Image, Divider } from '@heroui/react';
 import { useState, useEffect, useContext } from 'react';
 import { Employee_context } from '../Context';
 import NoResults from '../Images/noFoundR.jpg';
@@ -24,11 +24,12 @@ function Table1(){
         }, [departments]);
         
     return(
-        <div className="bg-slate-300 rounded-md p-2 w-full overflow-y-auto h-[300px]">
-                    <h1 className="mb-2 font-sans text-xl font-bold">Departments</h1>
+        <div className="w-full p-2 overflow-y-auto rounded-md bg-slate-300">
+                    <h1 className="mb-2 font-bold">Departments</h1>
+                    <Divider/>
                     {
                     (Departments.length > 0)? (
-                    <Table>
+                    <Table isStriped className='mt-2'>
                         <TableHeader>
                             <TableColumn>Department</TableColumn>
                             <TableColumn>Email</TableColumn>

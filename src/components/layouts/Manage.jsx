@@ -70,18 +70,7 @@ function ManageEvents() {
         setNewTodo({ todo: "", Done: false });
     };
 
-    const handleTodoChange = (e) => {
-        const { name, value } = e.target;
-        setNewTodo((prev) => ({ ...prev, [name]: value }));
-    };
 
-    const toggleCompletion = (index) => {
-        setTodo(
-            Todo.map((task, idx) =>
-                idx === index ? { ...task, Done: !task.Done } : task
-            )
-        );
-    };
 
     const ClockCircleLinearIcon = (props) => {
         return (
@@ -230,54 +219,6 @@ function ManageEvents() {
                                 ))}
                     </div>
                 )}
-                <div className="mt-3">
-                <motion.h1 className="mb-1 font-sans text-2xl font-bold text-left">
-                        To-do Manager
-                    </motion.h1>
-                    <Form
-                        onSubmit={handleS}
-                        className="flex flex-row items-center justify-center gap-2 mt-6 mb-2"
-                    >
-                        <Input label="Task" name="todo" onChange={handleTodoChange} />
-                        <Button type="submit" variant="flat" color="primary" size="lg">
-                            Add Task
-                        </Button>
-                    </Form>
-                    {(Todo.length > 0)? (<div className="p-2 mt-2 bg-slate-100 rounded-3xl">
-                        <Card>
-                            <CardHeader>
-                                <p>Task</p>
-                            </CardHeader>
-                            <Divider/>
-                            <CardBody>
-                                {Todo.map((itm, idx) => (
-                                    <>
-                                    <div key={idx} className="flex flex-row justify-between my-1">
-                                        <Checkbox onValueChange={() => toggleCompletion(idx)} lineThrough className="font-semibold">
-                                        {itm.todo}
-                                        </Checkbox>                                          
-                                                <Button onPress={() =>setTodo(Todo.filter((_, index) => index !== idx ))}color="danger">
-                                                    Delete
-                                                </Button>
-                                                <Button>
-                                                    Edit
-                                                </Button>
-                                    </div>
-                                    <Divider/>
-                                    </>
-                                ))}
-                            </CardBody>
-                        </Card>
-                    </div>) : (<Card> 
-                            <CardHeader>
-                                <p>Task</p>
-                            </CardHeader>
-                            <CardBody >
-                                <p className="text-center">No task yet</p><br/>
-                                <p className="text-center">Add your To-dos and Keep track of them accross EMS</p>
-                            </CardBody>
-                            </Card>)}
-                </div>
             </div>
         </motion.div>
     );

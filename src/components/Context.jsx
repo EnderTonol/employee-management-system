@@ -7,17 +7,17 @@ export default function ContextProvider({ children }) {
     const [departments, setDepartments] = useState([]);
     const [EmployeesName, setEmployeesName] = useState([]);
     const [Meeting,setMeeting] = useState([]);
-    const [Todo,setTodo] = useState([]);
     const [indname,setIndname] = useState("");
     const [disc, setDisc] = useState("");
+    const [EmployeeStatus,setEmployeeStatus] = useState([]);
     
     useEffect(() => {
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];
         const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];
         const FetchMeeting = JSON.parse(sessionStorage.getItem("Meeting"))|| [];
-        const FetchTodos = JSON.parse(sessionStorage.getItem("Todos")) || [];
         const FetchName = JSON.parse(sessionStorage.getItem("indname")) || "";
-        const FetchDisc = JSON.parse(sessionStorage.getItem('disc')) || ""
+        const FetchDisc = JSON.parse(sessionStorage.getItem('disc')) || "";
+        const FetchStatus = JSON.parse(sessionStorage.getItem('employeeStatus')) || [];
         if (FetchData) {
             setEmployees(FetchData);
             setEmployeesName(FetchData.map(employee => employee.name));
@@ -28,14 +28,14 @@ export default function ContextProvider({ children }) {
         if(FetchMeeting){
             setMeeting(FetchMeeting);
         }
-        if(FetchTodos){
-            setTodo(FetchTodos);
-        }
         if(FetchName){
             setIndname(FetchName);
         }
         if(FetchDisc){
             setDisc(FetchDisc);
+        }
+        if(FetchStatus){
+            setEmployeeStatus(FetchStatus)
         }
     }, []);
 
@@ -54,11 +54,7 @@ export default function ContextProvider({ children }) {
     useEffect(()=>{ 
         sessionStorage.setItem("Meeting", JSON.stringify(Meeting));
     },[Meeting]);
-
-    useEffect(()=>{
-        sessionStorage.setItem("Todos", JSON.stringify(Todo));
-    },[Todo]);
-
+    
     useEffect(()=>{
         sessionStorage.setItem("IndName", JSON.stringify(indname));
     },[indname]);
@@ -67,8 +63,12 @@ export default function ContextProvider({ children }) {
         sessionStorage.setItem("Disc", JSON.stringify(disc));
     },[disc]);
 
+    useEffect(()=>{
+        sessionStorage.setItem("employeeStatus", JSON.stringify(EmployeeStatus));
+    },[EmployeeStatus])
+
     return (
-        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, Todo, setTodo, indname, setIndname, disc, setDisc }}>
+        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, indname, setIndname, disc, setDisc, EmployeeStatus, setEmployeeStatus }}>
             {children}
         </Employee_context.Provider>
     );

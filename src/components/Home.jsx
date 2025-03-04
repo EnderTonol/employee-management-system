@@ -6,6 +6,10 @@ const EmployeesShow = React.lazy(()=> import('./layouts/EmployeesShow'))
 const Departments = React.lazy(()=> import('./layouts/Departments'))
 const ManageEvents = React.lazy(()=> import('./layouts/Manage'))
 const Login = React.lazy(()=> import('./loginPge'))
+const StafNav = React.lazy(()=> import('./staff_layouts/Nav'))
+const StaffDashBoard = React.lazy(()=> import('./staff_layouts/staffdashboard'))
+const Tasks = React.lazy(()=> import('./layouts/TaskManage'))
+const EmployeeStatus = React.lazy(()=> import('./staff_layouts/EmployeesTasks'))
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Context";
 
@@ -29,12 +33,24 @@ function Home() {
             element: <Layout><Nav /><EmployeesShow /></Layout>
         },
         {
-            path: "/manage-events",
+            path: "/meetings",
             element: <Layout><Nav /><ManageEvents /></Layout>
         },
         {
             path: "/departments",
             element: <Layout><Nav /><Departments /></Layout>
+        },
+        {
+            path: "/staff-dashboard",
+            element: <Layout><StafNav /><StaffDashBoard/></Layout>
+        },
+        {
+            path: "/assign-task",
+            element: <Layout><Nav/><Tasks/></Layout>
+        },
+        {
+            path: "/emp-tasks",
+            element: <Layout><StafNav/><EmployeeStatus/></Layout>
         }
     ]);
 
@@ -53,7 +69,7 @@ const Layout = ({ children }) => (
            <p className="font-sans text-center font-3xl">YOU NEED LARGER SCREEN!</p>
            <p className="font-mono text-medium">FOR RUN SITE!!! THAN YOUR DEVICE</p>
     </div> */}
-    <div className="hidden lg:flex">
+    <div className="flex">
         {children}
     </div>
     </>
