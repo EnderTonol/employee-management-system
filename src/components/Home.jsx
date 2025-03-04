@@ -5,6 +5,7 @@ const Employees = React.lazy(()=> import('./layouts/Employees'))
 const EmployeesShow = React.lazy(()=> import('./layouts/EmployeesShow'))
 const Departments = React.lazy(()=> import('./layouts/Departments'))
 const ManageEvents = React.lazy(()=> import('./layouts/Manage'))
+const Login = React.lazy(()=> import('./loginPge'))
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Context";
 
@@ -13,23 +14,27 @@ function Home() {
     const Routes = createBrowserRouter([
         {
             path: "/",
-            element: <Layout><Dashboard /></Layout>
+            element: <Layout><Login /></Layout>
+        },
+        {
+            path: "/dashboard",
+            element: <Layout><Nav /><Dashboard /></Layout>
         },
         {
             path: "/employees",
-            element: <Layout><Employees /></Layout>
+            element: <Layout><Nav /><Employees /></Layout>
         },
         {
             path: "/employees-data",
-            element: <Layout><EmployeesShow /></Layout>
+            element: <Layout><Nav /><EmployeesShow /></Layout>
         },
         {
             path: "/manage-events",
-            element: <Layout><ManageEvents /></Layout>
+            element: <Layout><Nav /><ManageEvents /></Layout>
         },
         {
             path: "/departments",
-            element: <Layout><Departments /></Layout>
+            element: <Layout><Nav /><Departments /></Layout>
         }
     ]);
 
@@ -44,12 +49,11 @@ function Home() {
 
 const Layout = ({ children }) => (
     <>
-    <div className="flex flex-col items-center justify-center w-full h-full mt-12 lg:hidden"> 
+    {/* <div className="flex flex-col items-center justify-center w-full h-full mt-12 lg:hidden"> 
            <p className="font-sans text-center font-3xl">YOU NEED LARGER SCREEN!</p>
            <p className="font-mono text-medium">FOR RUN SITE!!! THAN YOUR DEVICE</p>
-    </div>
+    </div> */}
     <div className="hidden lg:flex">
-        <Nav />
         {children}
     </div>
     </>
