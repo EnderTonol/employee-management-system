@@ -172,7 +172,7 @@ function EmployeesShow() {
                     Total Employees: {employees.length}
                 </Chip>
             </motion.div>
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
                 {employees.map((employee, idx) => (
                     <Card key={idx} className="flex flex-col mb-4 w-[300px]">
                         <CardHeader className="flex flex-col items-start">

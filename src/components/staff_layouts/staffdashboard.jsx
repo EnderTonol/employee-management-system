@@ -39,7 +39,9 @@ function StaffDashBoard() {
         if (employees && employees.length > 0) {
             const employeeDetails = employees.map(emp => ({
                 name: emp.name || 'No Name',
-                email: emp.Email || 'No Email'
+                email: emp.Email || 'No Email',
+                task: "",
+                taskStatus: false
             }));
             setEmployeeStatus(employeeDetails);
             
