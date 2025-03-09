@@ -280,18 +280,6 @@ export default function ContextProvider({ children }) {
         }
     }, []);
 
-    useEffect(()=>{
-        if (employees && employees.length > 0) {
-            const employeeDetails = employees.map(emp => ({
-                name: emp.name || 'No Name',
-                task: "",
-                taskStatus: false
-            }));
-            setEmployeeStatus(employeeDetails);
-            
-        }
-    },[employees])
-
     useEffect(() => {
         sessionStorage.setItem("Employees", JSON.stringify(employees));
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];

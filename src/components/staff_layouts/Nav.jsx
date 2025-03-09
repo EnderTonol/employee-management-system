@@ -23,7 +23,7 @@ function StafNav(){
   return (
     <>
     <nav>
-    <nav className="flex w-52">
+    <nav className="hidden w-52 lg:flex">
       <div className="fixed flex flex-col items-center justify-start w-auto h-full gap-3 pt-5 pl-6 pr-8 border-r-2 rounded bg-slrounded-md">
         <Image src={emsLogo} alt="emslogo" width={80}/>
         {navItems.map((item) => (
@@ -41,6 +41,7 @@ function StafNav(){
         <p className="grow"></p>
         <Button className="w-full mb-4" color="danger" variant="flat" onPress={()=> navigate("/")}>Log Out</Button>
     </div>
+    
     
     </nav>
     </nav></>

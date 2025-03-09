@@ -7,7 +7,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <HeroUIProvider>
-    <ToastProvider/>
+    <ToastProvider />
     <App />
   </HeroUIProvider>,
 )
