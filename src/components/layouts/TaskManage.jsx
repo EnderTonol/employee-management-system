@@ -1,5 +1,5 @@
 import { useContext,useState,useMemo } from "react";
-import { Card,CardHeader,CardFooter,CardBody,Divider,Button,ButtonGroup,Form,Input,Select,SelectItem } from "@heroui/react";
+import { Card,CardHeader,CardFooter,CardBody,Divider,Button,ButtonGroup,Form,Select,SelectItem, Textarea } from "@heroui/react";
 import { Modal,ModalBody,ModalFooter,ModalHeader,useDisclosure,ModalContent } from '@heroui/react'
 import { Employee_context } from "../Context";
 function Tasks(){
@@ -7,14 +7,11 @@ function Tasks(){
         if (!context) {
             throw new Error("DashBoard component must be wrapped within a ContextProvider");
         }
-        const { EmployeeStatus, setEmployeeStatus } = context;
-        const [selectedKeys, setSelectedKeys] = useState(new Set(["text"]));
+        const { employees, EmployeeStatus, setEmployeeStatus } = context;
+        const [Etask,setEtask] = useState("");
+       
         const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
-        const selectedValue = useMemo(
-          () => Array.from(selectedKeys).join(", ").replaceAll("_", " "),
-          [selectedKeys],
-        );
         
 
         return (
@@ -26,15 +23,22 @@ function Tasks(){
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">Assign Tasks</ModalHeader>
               <ModalBody>
                 <Form>
+                <Textarea onChange={(e)=> setTask(e.target.value)}/>
                 <Select
-                    label="Department"
-                    name="department"
-                    placeholder="Select Department"
+                    label="Assign task to"
+                    name="Employee"
+                    placeholder="Select Employee"
                     >
-                                            
+                         {
+                          employees.map((itm)=>(<><SelectItem onPress={()=> setEmployeeStatus((prev)=> [...prev, {
+                            name: itm.name,
+                            task: Etask,
+                            taskStatus: false
+                          }])}>{itm.name}</SelectItem></>))
+                         }                   
                 </Select>
                 </Form>
               </ModalBody>
@@ -52,8 +56,10 @@ function Tasks(){
       </Modal>
            
             {
-              (EmployeeStatus.length > 0)?
-                EmployeeStatus.map((itm,idx)=>(
+              (EmployeeStatus.length > 0)? 
+                EmployeeStatus.map((itm,idx)=>{
+                 {
+                  (itm.task !== "")? (
                   <>
                    <Card>
                     <CardHeader>
@@ -70,8 +76,9 @@ function Tasks(){
                     </CardFooter>
                    </Card>
                   </>
-
-                )) : <><p>.</p></>
+                 ) : null 
+                }
+            }) : <><p>.</p></>
             } 
             </div>
             </>

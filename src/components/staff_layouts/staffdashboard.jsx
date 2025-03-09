@@ -43,8 +43,37 @@ function StaffDashBoard() {
                 task: "",
                 taskStatus: false
             }));
-            setEmployeeStatus(employeeDetails);
-            
+            const emp = [{
+                "name": "Tariq",
+                "email": "tariq@itsupport.com",
+                "task": "Provide IT support for internal staff",
+                "taskStatus": true
+            },
+            {
+                "name": "Laila",
+                "email": "laila@software.com",
+                "task": "Design user interfaces for mobile apps",
+                "taskStatus": false
+            },
+            {
+                "name": "Nashit",
+                "email": "nashit@hr.com",
+                "task": "Process payroll for employees",
+                "taskStatus": true
+            },
+            {
+                "name": "Rida",
+                "email": "rida@marketing.com",
+                "task": "Manage social media accounts",
+                "taskStatus": false
+            },
+            {
+                "name": "Yasir",
+                "email": "yasir@finance.com",
+                "task": "Oversee treasury operations",
+                "taskStatus": true
+            }]
+            setEmployeeStatus(emp);
         }
     }, [employees]);
 
@@ -61,21 +90,22 @@ function StaffDashBoard() {
                    <Table>
                     <TableHeader>
                         <TableColumn>Employee</TableColumn>
-                        <TableColumn>Email</TableColumn>
                         <TableColumn>Task</TableColumn>
+                        <TableColumn>Status</TableColumn>
                     </TableHeader>
                     <TableBody>
-                        {
-                            EmployeeStatus.map((itm)=>(
-                                <>
-                                <TableRow>
-                                    <TableCell>{itm.name}</TableCell>
-                                    <TableCell>{itm.email}</TableCell>
-                                    <TableCell>{itm.task}</TableCell>
-                                </TableRow>
-                                </>
-                            ))
-                        }
+                    {
+    EmployeeStatus.filter(itm => itm.task !== "").map((itm) => (
+        <>
+            <TableRow>
+                <TableCell>{itm.name}</TableCell>
+                <TableCell>{itm.task}</TableCell>
+                <TableCell>{itm.status}</TableCell>
+            </TableRow>
+        </>
+    ))
+}
+
                     </TableBody>
                    </Table>
                 </div>

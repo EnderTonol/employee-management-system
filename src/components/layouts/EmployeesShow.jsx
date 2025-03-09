@@ -110,8 +110,8 @@ function EmployeesShow() {
                                     <Input label="ID Number" name="id"  
                                         value={newEmployee.id} onChange={handleInputChange} />
                                     <Select
-                                        label="Job Post"
-                                        placeholder="Select Job Post"
+                                        label="Job Type"
+                                        placeholder="Select Job Type"
                                         selectedKeys={newEmployee.JobType ? [newEmployee.JobType] : []}
                                         onSelectionChange={(keys) => {
                                             const keyArray = Array.from(keys);

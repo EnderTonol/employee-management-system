@@ -67,7 +67,7 @@ export default function ContextProvider({ children }) {
               "department": "HR",
               "jobTitle": "HR Specialist",
               "salary": "80000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "ali@hr.com",
               "Tel": "0311-1234567"
             },
@@ -77,7 +77,7 @@ export default function ContextProvider({ children }) {
               "department": "Marketing",
               "jobTitle": "Marketing Manager",
               "salary": "95000",
-              "JobType": "Full-Time",
+              "JobType": "Manager",
               "Email": "sara@marketing.com",
               "Tel": "0321-2345678"
             },
@@ -87,7 +87,7 @@ export default function ContextProvider({ children }) {
               "department": "Finance",
               "jobTitle": "Accountant",
               "salary": "70000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "john@finance.com",
               "Tel": "0331-3456789"
             },
@@ -97,7 +97,7 @@ export default function ContextProvider({ children }) {
               "department": "IT Support",
               "jobTitle": "System Administrator",
               "salary": "85000",
-              "JobType": "Full-Time",
+              "JobType": "Admin",
               "Email": "mona@itsupport.com",
               "Tel": "0341-4567890"
             },
@@ -107,7 +107,7 @@ export default function ContextProvider({ children }) {
               "department": "software",
               "jobTitle": "Frontend Developer",
               "salary": "95000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "faisal@software.com",
               "Tel": "0350-5678901"
             },
@@ -117,7 +117,7 @@ export default function ContextProvider({ children }) {
               "department": "HR",
               "jobTitle": "Recruiter",
               "salary": "65000",
-              "JobType": "Part-Time",
+              "JobType": "Worker",
               "Email": "ayesha@hr.com",
               "Tel": "0361-6789012"
             },
@@ -127,7 +127,7 @@ export default function ContextProvider({ children }) {
               "department": "Marketing",
               "jobTitle": "SEO Specialist",
               "salary": "72000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "zara@marketing.com",
               "Tel": "0371-7890123"
             },
@@ -137,7 +137,7 @@ export default function ContextProvider({ children }) {
               "department": "Finance",
               "jobTitle": "Financial Analyst",
               "salary": "88000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "omar@finance.com",
               "Tel": "0381-8901234"
             },
@@ -147,7 +147,7 @@ export default function ContextProvider({ children }) {
               "department": "IT Support",
               "jobTitle": "Help Desk Support",
               "salary": "60000",
-              "JobType": "Full-Time",
+              "JobType": "Worker",
               "Email": "nina@itsupport.com",
               "Tel": "0391-9012345"
             },
@@ -157,7 +157,7 @@ export default function ContextProvider({ children }) {
               "department": "software",
               "jobTitle": "Backend Developer",
               "salary": "105000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "saad@software.com",
               "Tel": "0401-0123456"
             },
@@ -167,7 +167,7 @@ export default function ContextProvider({ children }) {
               "department": "HR",
               "jobTitle": "HR Coordinator",
               "salary": "75000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "kiran@hr.com",
               "Tel": "0411-1234567"
             },
@@ -177,7 +177,7 @@ export default function ContextProvider({ children }) {
               "department": "Marketing",
               "jobTitle": "Content Writer",
               "salary": "70000",
-              "JobType": "Part-Time",
+              "JobType": "Worker",
               "Email": "amir@marketing.com",
               "Tel": "0421-2345678"
             },
@@ -187,7 +187,7 @@ export default function ContextProvider({ children }) {
               "department": "Finance",
               "jobTitle": "Auditor",
               "salary": "92000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "reema@finance.com",
               "Tel": "0431-3456789"
             },
@@ -197,7 +197,7 @@ export default function ContextProvider({ children }) {
               "department": "IT Support",
               "jobTitle": "Network Engineer",
               "salary": "90000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "bilal@itsupport.com",
               "Tel": "0441-4567890"
             },
@@ -207,7 +207,7 @@ export default function ContextProvider({ children }) {
               "department": "software",
               "jobTitle": "Java Developer",
               "salary": "110000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "khalid@software.com",
               "Tel": "0451-5678901"
             },
@@ -217,7 +217,7 @@ export default function ContextProvider({ children }) {
               "department": "HR",
               "jobTitle": "HR Assistant",
               "salary": "60000",
-              "JobType": "Full-Time",
+              "JobType": "Assistant",
               "Email": "samira@hr.com",
               "Tel": "0461-6789012"
             },
@@ -227,7 +227,7 @@ export default function ContextProvider({ children }) {
               "department": "Marketing",
               "jobTitle": "Graphic Designer",
               "salary": "75000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "adeel@marketing.com",
               "Tel": "0471-7890123"
             },
@@ -237,7 +237,7 @@ export default function ContextProvider({ children }) {
               "department": "Finance",
               "jobTitle": "Investment Analyst",
               "salary": "105000",
-              "JobType": "Full-Time",
+              "JobType": "Employee",
               "Email": "hina@finance.com",
               "Tel": "0481-8901234"
             },
@@ -247,111 +247,11 @@ export default function ContextProvider({ children }) {
               "department": "IT Support",
               "jobTitle": "IT Support Specialist",
               "salary": "80000",
-              "JobType": "Full-Time",
+              "JobType": "Worker",
               "Email": "tariq@itsupport.com",
               "Tel": "0491-9012345"
-            },
-            {
-              "name": "Laila",
-              "id": "12o21",
-              "department": "software",
-              "jobTitle": "UI/UX Designer",
-              "salary": "90000",
-              "JobType": "Full-Time",
-              "Email": "laila@software.com",
-              "Tel": "0501-0123456"
-            },
-            {
-              "name": "Nashit",
-              "id": "12o22",
-              "department": "HR",
-              "jobTitle": "Payroll Specialist",
-              "salary": "65000",
-              "JobType": "Part-Time",
-              "Email": "nashit@hr.com",
-              "Tel": "0511-1234567"
-            },
-            {
-              "name": "Rida",
-              "id": "12o23",
-              "department": "Marketing",
-              "jobTitle": "Social Media Manager",
-              "salary": "95000",
-              "JobType": "Full-Time",
-              "Email": "rida@marketing.com",
-              "Tel": "0521-2345678"
-            },
-            {
-              "name": "Yasir",
-              "id": "12o24",
-              "department": "Finance",
-              "jobTitle": "Treasury Manager",
-              "salary": "120000",
-              "JobType": "Full-Time",
-              "Email": "yasir@finance.com",
-              "Tel": "0531-3456789"
-            },
-            {
-              "name": "Fariha",
-              "id": "12o25",
-              "department": "IT Support",
-              "jobTitle": "IT Project Manager",
-              "salary": "95000",
-              "JobType": "Full-Time",
-              "Email": "fariha@itsupport.com",
-              "Tel": "0541-4567890"
-            },
-            {
-              "name": "Muneeb",
-              "id": "12o26",
-              "department": "software",
-              "jobTitle": "DevOps Engineer",
-              "salary": "115000",
-              "JobType": "Full-Time",
-              "Email": "muneeb@software.com",
-              "Tel": "0551-5678901"
-            },
-            {
-              "name": "Rashid",
-              "id": "12o27",
-              "department": "HR",
-              "jobTitle": "Employee Relations Specialist",
-              "salary": "80000",
-              "JobType": "Full-Time",
-              "Email": "rashid@hr.com",
-              "Tel": "0561-6789012"
-            },
-            {
-              "name": "Sania",
-              "id": "12o28",
-              "department": "Marketing",
-              "jobTitle": "Brand Manager",
-              "salary": "110000",
-              "JobType": "Full-Time",
-              "Email": "sania@marketing.com",
-              "Tel": "0571-7890123"
-            },
-            {
-              "name": "Zain",
-              "id": "12o29",
-              "department": "Finance",
-              "jobTitle": "Risk Manager",
-              "salary": "105000",
-              "JobType": "Full-Time",
-              "Email": "zain@finance.com",
-              "Tel": "0581-8901234"
-            },
-            {
-              "name": "Ayesha",
-              "id": "12o30",
-              "department": "IT Support",
-              "jobTitle": "Database Administrator",
-              "salary": "95000",
-              "JobType": "Full-Time",
-              "Email": "ayesha@itsupport.com",
-              "Tel": "0591-9012345"
             }
-          ]
+          ]          
           ))
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];
         const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];
@@ -384,7 +284,6 @@ export default function ContextProvider({ children }) {
         if (employees && employees.length > 0) {
             const employeeDetails = employees.map(emp => ({
                 name: emp.name || 'No Name',
-                email: emp.Email || 'No Email',
                 task: "",
                 taskStatus: false
             }));
