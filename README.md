@@ -62,5 +62,5 @@ npm start
 
 #### How Bug Fixes
 - Using ChatGPT 🤣 for SessionStorage
-- Netlify Pages Navigation Bug Fixes
+- Netlify Pages Navigation Bug Fixes using file `netlify.toml`
 
