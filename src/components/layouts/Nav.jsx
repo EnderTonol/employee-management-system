@@ -12,10 +12,11 @@ function Nav() {
   const navItems = [
     { key: 1, path: "/dashboard", title: "Dashboard" },
     { key: 2, path: "/employees", title: "Employees" },
-    { key: 3, path: "/employees-data", title: "Manage Employees" },
+    { key: 3, path: "/employees-data", title: "Detail Employees" },
     { key: 4, path: "/meetings", title: "Meeting" },
     { key: 5, path: "/departments", title: "Departments" },
-    { key: 6, path: "/assign-task", title: "Tasks" }
+    { key: 6, path: "/assign-task", title: "Tasks" },
+    { key: 7, path: "/Admin-employee-leaves", title: "Employee Leaves" }
   ];
 
   const handlepath = (path) =>{

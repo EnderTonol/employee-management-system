@@ -13,7 +13,8 @@ function StafNav(){
 
   const navItems = [
     { key: 1, path: "/staff-dashboard", title: "Dashboard" },
-    { key: 2, path: "/emp-tasks", title: "Assigned Tasks" }
+    { key: 2, path: "/emp-tasks", title: "Assigned Tasks" },
+    { key: 3, path: "/employee-leaves", title: "Leaves"},
   ];
   
   const handlepath = (path) =>{

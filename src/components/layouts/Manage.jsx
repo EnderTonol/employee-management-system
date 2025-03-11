@@ -36,8 +36,6 @@ function ManageEvents() {
         MeetingDepartment: "",
     });
 
-    const [NewTodo, setNewTodo] = useState({ todo: "", Done: false });
-
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     const handleInputChange = (e) => {
@@ -46,7 +44,18 @@ function ManageEvents() {
     };
 
     const handleSubmit = () => {
-        
+        if (
+            !NwMeeting.MeetingName.trim() ||
+            !NwMeeting.MeetingDate.trim() ||
+            !NwMeeting.MeetingTime.trim() ||
+            !NwMeeting.MeetingLocation.trim() ||
+            !NwMeeting.MeetingDescription.trim() ||
+            !NwMeeting.MeetingDepartment.trim()
+        ) {
+            alert("All fields are required.");
+            return;
+        }
+    
         setMeeting((prev) => [...prev, NwMeeting]);
         onOpenChange(false);
     };
@@ -63,12 +72,7 @@ function ManageEvents() {
         setNwMeeting((prev) => ({ ...prev, MeetingDate: formatedDate }));
     };
 
-    const handleS = (e) => {
-        e.preventDefault();
-        e.target.reset();
-        setTodo((prev) => [...prev, NewTodo]);
-        setNewTodo({ todo: "", Done: false });
-    };
+
 
 
 

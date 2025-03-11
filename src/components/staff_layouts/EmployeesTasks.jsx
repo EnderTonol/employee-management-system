@@ -31,7 +31,7 @@ function EmployeeStatus() {
       timeout: 3000,
       shouldShowTimeoutProgress: true,
       variant: "bordered",
-      color: "primary"
+      color: newTasks[idx].taskStatus ? "primary" : "danger"
     });
   };
 

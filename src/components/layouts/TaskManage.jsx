@@ -25,14 +25,24 @@ function Tasks() {
     throw new Error("Tasks component must be wrapped within a ContextProvider");
   }
   const { employees, EmployeeStatus, setEmployeeStatus } = context;
-  const [Task, setTask] = useState({});
+  const [Task, setTask] = useState({
+    task: "",
+    name: "",
+    completed: false,
+  });
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleAssign = () => {
+    if (!Task.task.trim() || !Task.name.trim()) {
+        alert("Task and Name fields are required.");
+        return;
+    }
+
     setEmployeeStatus((prev) => [...prev, Task]);
-    setTask({});
-  };
+    setTask({ task: "", name: "", completed: false });
+};
+
 
   const handleRemove = (index) => {
     setEmployeeStatus((prev) => prev.filter((_, i) => i !== index));
@@ -54,12 +64,13 @@ function Tasks() {
                   <Form>
                     <Textarea
                       onChange={(e) => setTask((prev) => ({ ...prev, task: e.target.value }))}
+                      label="Task"
                     />
                     <Select label="Assign task to" name="Employee" placeholder="Select Employee">
                       {employees.map((itm) => (
                         <SelectItem
                           key={itm.id}
-                          onClick={() => setTask((prev) => ({ ...prev, name: itm.name }))}
+                          onPress={() => setTask((prev) => ({ ...prev, name: itm.name }))}
                         >
                           {itm.name}
                         </SelectItem>

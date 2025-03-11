@@ -23,6 +23,11 @@ function Departments() {
     };
 
     const handleSubmit = () => {
+        if (!newDepartment.Name || !newDepartment.ManagerName || !newDepartment.Tel || !newDepartment.Email || !newDepartment.Discription) {
+            alert("All fields are required.");
+            return;
+        }
+    
         if (editIndex !== null) {
             setDepartments(prev => {
                 const updated = [...prev];
@@ -36,6 +41,7 @@ function Departments() {
         setNewDepartment({ Name: "", ManagerName: "", Tel: "", Email: "", Discription: "" });
         setExpandedKey(null);
     };
+    
 
     const handleEdit = (index) => {
         setEditIndex(index);

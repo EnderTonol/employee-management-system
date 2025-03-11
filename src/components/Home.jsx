@@ -10,6 +10,8 @@ const StafNav = React.lazy(()=> import('./staff_layouts/Nav'))
 const StaffDashBoard = React.lazy(()=> import('./staff_layouts/staffdashboard'))
 const Tasks = React.lazy(()=> import('./layouts/TaskManage'))
 const EmployeeStatus = React.lazy(()=> import('./staff_layouts/EmployeesTasks'))
+const Employee_leaves = React.lazy(()=> import('./staff_layouts/EmpLeave'))
+const Admin_Employee_Leaves = React.lazy(()=> import('./layouts/EmployeeLeaves'))
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ContextProvider from "./Context";
 
@@ -51,6 +53,14 @@ function Home() {
         {
             path: "/emp-tasks",
             element: <Layout><StafNav/><EmployeeStatus/></Layout>
+        },
+        {
+            path: "/employee-leaves",
+            element: <Layout><StafNav/><Employee_leaves/></Layout>
+        },
+        {
+            path: "/Admin-employee-leaves",
+            element: <Layout><Nav/><Admin_Employee_Leaves/></Layout>
         }
     ]);
 
