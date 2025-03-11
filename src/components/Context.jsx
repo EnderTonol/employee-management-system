@@ -254,6 +254,32 @@ export default function ContextProvider({ children }) {
             }
           ]          
           ))
+          sessionStorage.setItem("Meeting", JSON.stringify([
+            {
+              MeetingName: "Project Kickoff",
+              MeetingDate: "2025-03-15",
+              MeetingTime: "10:00 AM",
+              MeetingLocation: "Conference Room A",
+              MeetingDescription: "Initial meeting to discuss project scope and roles.",
+              MeetingDepartment: "Software"
+            },
+            {
+              MeetingName: "HR Policy Update",
+              MeetingDate: "2025-03-16",
+              MeetingTime: "02:00 PM",
+              MeetingLocation: "HR Office",
+              MeetingDescription: "Discussion on new HR policies and employee benefits.",
+              MeetingDepartment: "HR"
+            },
+            {
+              MeetingName: "Marketing Strategy",
+              MeetingDate: "2025-03-17",
+              MeetingTime: "11:30 AM",
+              MeetingLocation: "Marketing Hub",
+              MeetingDescription: "Planning next quarter's marketing campaigns.",
+              MeetingDepartment: "Marketing"
+            }
+          ]))
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];
         const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];
         const FetchMeeting = JSON.parse(sessionStorage.getItem("Meeting"))|| [];
@@ -319,7 +345,7 @@ export default function ContextProvider({ children }) {
    
 
     return (
-        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, indname, setIndname, disc, setDisc, EmployeeStatus, setEmployeeStatus, EmployeeLeaves, setEmployeeLeaves }}>
+        <Employee_context.Provider value={{ employees, setEmployees, departments, setDepartments, EmployeesName, setEmployeesName, Meeting, setMeeting, EmployeeStatus, setEmployeeStatus, EmployeeLeaves, setEmployeeLeaves }}>
             {children}
         </Employee_context.Provider>
     );
