@@ -1,10 +1,8 @@
 import { Button,useDisclosure, Divider,Image,Alert } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
-import Menu from '../Images/menu.png';
 import emsLogo from "../Images/EMSlogo.jpg";
-import { motion} from "framer-motion";
+import Header from "../../Header";
 function Nav() {
   const [activeTab, setActiveTab] = useState("/");
   const navigate = useNavigate();
@@ -26,7 +24,7 @@ function Nav() {
 
   return (
     <>
-    <nav className="flex w-52">
+    <nav className="hidden w-52 lg:flex z-10 bg-slate-50">
       <div className="fixed flex flex-col items-center justify-start w-auto h-full gap-3 pt-5 pl-6 pr-8 border-r-2 rounded bg-slrounded-md">
         <Image src={emsLogo} alt="emslogo" width={80}/>
         {navItems.map((item) => (

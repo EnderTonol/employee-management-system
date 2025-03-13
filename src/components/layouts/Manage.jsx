@@ -23,6 +23,7 @@ import {
 } from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import {  } from "@heroui/toast";
+import Header from "../../Header";
 
 function ManageEvents() {
     const { Meeting, setMeeting, departments, Todo, setTodo } = useContext(Employee_context);
@@ -101,7 +102,7 @@ function ManageEvents() {
     };
 
     return (
-        <motion.div className="grow"
+        <motion.div className="grow bg-slate-300"
         initial={{opacity: 0, y: -10}}
         animate={{opacity: 1, y: 0}}
         >
@@ -168,11 +169,7 @@ function ManageEvents() {
                         )}
                     </ModalContent>
                 </Modal>
-                <div className="flex flex-col gap-2 mt-3">
-                    <motion.h1 className="pl-16 mb-1 font-sans text-2xl font-bold text-left">
-                        Meeting Manager
-                    </motion.h1>
-                </div>
+                <Header title="Meetings"/>
             </div>
 
             <div className="p-2">

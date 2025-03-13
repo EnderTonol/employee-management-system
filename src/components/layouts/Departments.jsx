@@ -5,6 +5,7 @@ import {Accordion, AccordionItem} from "@heroui/react";
 import { useState, useContext } from "react";
 import { Employee_context } from "../Context";
 import DepIcon from "../Images/department.png";
+import Header from "../../Header";
 
 function Departments() {
     const [newDepartment, setNewDepartment] = useState({ Name: "", ManagerName: "", Tel: "", Email: "", Discription: "" });
@@ -50,11 +51,11 @@ function Departments() {
     };
 
     return(
-        <motion.div className="flex flex-col h-full gap-2 p-2 grow"
+        <motion.div className="flex flex-col h-full gap-2 p-2 grow bg-slate-300"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
         >
-            <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Departments</motion.h1>
+            <Header title="Departments" />
             <Accordion
                 variant="shadow"
                 selectedKeys={expandedKey ? new Set([expandedKey]) : new Set()}

@@ -18,6 +18,7 @@ import {
   ModalContent,
 } from "@heroui/react";
 import { Employee_context } from "../Context";
+import Header from "../../Header";
 
 function Tasks() {
   const context = useContext(Employee_context);
@@ -50,8 +51,8 @@ function Tasks() {
 
   return (
     <>
-      <div className="p-2">
-        <h1>Assigned Tasks</h1>
+      <div className="p-2 bg-slate-300">
+        <Header title="Assign Tasks" />
         <Button onPress={onOpen} color="primary">
           Add Task
         </Button>
@@ -90,6 +91,7 @@ function Tasks() {
             )}
           </ModalContent>
         </Modal>
+        <div>
         {EmployeeStatus.length > 0 ? (
           EmployeeStatus.map((itm, idx) =>
             itm.task ? (
@@ -115,6 +117,7 @@ function Tasks() {
         ) : (
           <p>No tasks assigned.</p>
         )}
+        </div>
       </div>
     </>
   );

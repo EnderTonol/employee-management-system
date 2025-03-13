@@ -15,6 +15,7 @@ import {
 import NotFoundIcon from "../Images/not-found.png";
 import { Link } from "react-router-dom";
 import { Employee_context } from "../Context";
+import Header from "../../Header";
 
 function EmployeesShow() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -92,7 +93,7 @@ function EmployeesShow() {
     };
 
     return employees.length !== 0 ? (
-        <motion.div className="p-2 m-2"
+        <motion.div className="p-2 bg-stone-300 flex flex-col gap-2 items-center justify-center w-full"
             initial={{opacity: 0, y: -10}}
             animate={{opacity: 1, y: 0}}
         >
@@ -163,18 +164,10 @@ function EmployeesShow() {
                     )}
                 </ModalContent>
             </Modal>
-
-            <motion.div>
-                <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">
-                    Employees DataSets
-                </motion.h1>
-                <Chip color="primary" variant="solid" className="mb-2 font-mono">
-                    Total Employees: {employees.length}
-                </Chip>
-            </motion.div>
+            <Header title="Employees Detail"/>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
                 {employees.map((employee, idx) => (
-                    <Card key={idx} className="flex flex-col mb-4 w-[300px]">
+                    <Card key={idx} className="flex flex-col w-[300px]">
                         <CardHeader className="flex flex-col items-start">
                             <p className="text-sm">{"#" + (idx + 1)}</p>
                             <p className="text-lg font-medium">{employee.name}</p>

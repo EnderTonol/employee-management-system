@@ -64,7 +64,7 @@ function Login(){
     return(
         <>
         <div className="flex items-center justify-center w-full h-screen bg-slate-200">
-           <Card className="w-[400px]">
+           <Card className="w-[300px] lg:w-[400px]">
             <CardHeader>
             <p className="font-bold">Login</p>
             </CardHeader>

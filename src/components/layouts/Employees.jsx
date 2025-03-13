@@ -13,7 +13,7 @@ import {
 import { Form, Input, Button } from "@heroui/react";
 import { Employee_context } from "../Context";
 import NotFoundIcon from "../Images/not-found.png";
-
+import Header from "../../Header";
 
 function Employees() {
     
@@ -50,11 +50,11 @@ function Employees() {
     };
 
     return ( 
-        <motion.div className="p-2 grow"
+        <motion.div className="p-2 flex flex-col gap-2 grow bg-slate-300"
         initial={{opacity: 0, y: -10}}
         animate={{opacity: 1, y: 0}}
         >
-        <motion.h1 className="pl-20 mb-1 font-sans text-2xl font-bold text-left">Employees</motion.h1>
+        <Header title="Employees"/>
     {employees.length !== 0 ? ( <Button color="primary" onPress={onOpen}>Add Employee</Button>) : null}
       
         <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
@@ -110,7 +110,7 @@ function Employees() {
                 </Modal>
         {
         employees.length !== 0 ? (
-            <motion.div className="p-2 mt-2 rounded-3xl bg-slate-100">
+            <motion.div className="p-2 rounded-3xl bg-slate-100">
               
                 {employees.length !== 0 &&
                     <Table isStriped >
