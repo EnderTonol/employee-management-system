@@ -10,9 +10,6 @@
   -webkit-user-select: none;
   -ms-user-select: none;
 }
-html{
-    zoom: 100%;
-}
 /* For WebKit (Chrome, Edge, Safari) */
 ::-webkit-scrollbar {
     width: 12px;
