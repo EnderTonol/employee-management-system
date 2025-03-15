@@ -24,7 +24,7 @@ function Table1(){
         }, [departments]);
         
     return(
-        <div className="w-full p-2 overflow-y-auto rounded-md bg-slate-300">
+        <div className="w-full p-2 overflow-y-auto rounded-md">
                     <h1 className="mb-2 font-bold">Departments</h1>
                     <Divider/>
                     {

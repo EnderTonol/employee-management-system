@@ -53,14 +53,14 @@ function EmployeeStatus() {
                   <p>Name: {itm.name}</p>
                   <p>Task: {itm.task}</p>
                 </CardBody>
-                <Divider />
+                <Divider className={itm.completed ? "hidden" : ""} />
                 <CardFooter>
                   <Button
-                    color={itm.taskStatus ? "success" : "danger"}
+                    color={itm.completed ? "success" : "danger"}
                     className="w-full"
                     onPress={() => handleToggleStatus(idx)}
                   >
-                    {itm.taskStatus ? "Completed" : "InCompleted"}
+                    {itm.completed ? "Completed" : "Incompleted"}
                   </Button>
                 </CardFooter>
               </Card>

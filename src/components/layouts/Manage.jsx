@@ -111,7 +111,7 @@ function ManageEvents() {
     };
 
     return (
-        <motion.div className="grow bg-slate-300"
+        <motion.div className="grow"
         initial={{opacity: 0, y: -10}}
         animate={{opacity: 1, y: 0}}
         >
@@ -194,7 +194,7 @@ function ManageEvents() {
                 )}
 
                 {Meeting.length > 0 && (
-                    <div className="grid gap-2 p-2 mt-2 bg-slate-100 rounded-3xl md:grid md:grid-cols-2">
+                    <div className="grid gap-2 p-2 mt-2  rounded-3xl md:grid md:grid-cols-2">
                                 {Meeting.map((meeting, index) => (
                                     <Card key={index}>
                                         <CardHeader className="flex flex-col items-start">

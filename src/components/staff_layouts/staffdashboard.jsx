@@ -36,20 +36,20 @@ function StaffDashBoard() {
 
 
   return (
-    <div className="p-2 grow w-full bg-slate-600 flex flex-col gap-2">
+    <div className="p-2 grow w-full  flex flex-col gap-2">
       <StaffHeader title="Staff DashBoard" />
       <motion.div
         initial={{ x: -10, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "easeIn", duration: 0.3 }}
-        className="flex flex-col w-full gap-2 lg:flex-row"
+        className="flex flex-col w-full gap-2 lg:flex-row overflow-hidden"
       >
-        <div className="w-full p-3 rounded-md bg-slate-300">
+        <div className="w-full p-2 rounded-md bg-slate-300">
           <h1 className="mb-2 font-bold">Assigned Tasks</h1>
           <Divider />
           <Table
             classNames={{
-              base: "max-h-[300px] overflow-scroll",
+              base: "max-h-[300px] overflow-scroll mt-2",
               table: "min-h-[20px]",
             }}
           >
@@ -71,12 +71,12 @@ function StaffDashBoard() {
             </TableBody>
           </Table>
         </div>
-        <div className="w-full p-3 rounded-md bg-slate-300">
+        <div className="w-full p-2 rounded-md bg-slate-300">
           <h1 className="mb-2 font-bold">Leaves of Employees</h1>
           <Divider />
           <Table
             classNames={{
-              base: "max-h-[300px] overflow-scroll",
+              base: "max-h-[300px] overflow-scroll mt-2",
               table: "min-h-[20px]",
             }}
           >
@@ -107,7 +107,7 @@ function StaffDashBoard() {
         transition={{ type: "easeIn", duration: 0.3 }}
         className="flex flex-col w-full gap-2 lg:flex-row"
       >
-        <div className="w-full p-2 rounded-md bg-slate-300">
+        <div className="w-full p-2 rounded-md">
           <h1 className="mb-2 font-bold">Meetings</h1>
           <Divider />
           {Meeting.length > 0 ? (

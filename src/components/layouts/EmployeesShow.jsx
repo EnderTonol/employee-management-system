@@ -119,7 +119,7 @@ function EmployeesShow() {
     };
 
     return employees.length !== 0 ? (
-        <motion.div className="p-2 grow bg-slate-300 flex flex-col gap-2 h-full"
+        <motion.div className="p-2 grow flex flex-col gap-2 h-full"
             initial={{opacity: 0, y: -10}}
             animate={{opacity: 1, y: 0}}
         >

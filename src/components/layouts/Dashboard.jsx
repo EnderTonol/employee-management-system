@@ -83,7 +83,7 @@ function DashBoard() {
 
     return (
         <>
-            <div className='p-2 grow flex flex-col gap-2 bg-slate-300 h-full'>
+            <div className='p-2 grow flex flex-col gap-2 h-full'>
                 <Header title={"Dashboard"} />
                 <div className='flex flex-col lg:flex-row gap-2 items-center '>
                     <div className='rounded-lg bg-slate-100 h-full flex flex-col items-center p-4 w-full lg:w-auto'>

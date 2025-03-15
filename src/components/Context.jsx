@@ -121,7 +121,7 @@ export default function ContextProvider({ children }) {
             }
           ]))
           sessionStorage.setItem("employeeStatus", JSON.stringify([
-            { task: "Develop Mobile App UI", name: "abdullah", completed: false },
+            { task: "Develop Mobile App UI", name: "abdullah", completed: true },
             { task: "Conduct Employee Interviews", name: "Ali", completed: false },
             { task: "Create Social Media Strategy", name: "Sara", completed: true },
             { task: "Prepare Monthly Financial Report", name: "John", completed: false },
@@ -135,26 +135,26 @@ export default function ContextProvider({ children }) {
             { task: "Design Promotional Graphics", name: "Adeel", completed: true }
           ]))
           sessionStorage.setItem("EmployeeLeaves", JSON.stringify([
-            { reason: "Medical Leave", name: "Ali Khan", date: "2025-03-14", status: "Pending" },
+            { reason: "Medical Leave", name: "Ali Khan", date: "2025-03-14", status: "Approved" },
             { reason: "Family Emergency", name: "Sara Ahmed", date: "2025-03-15", status: "Pending" },
             { reason: "Vacation", name: "Usman Raza", date: "2025-03-16", status: "Pending" },
             { reason: "Sick Leave", name: "Ayesha Noor", date: "2025-03-17", status: "Pending" },
             { reason: "Personal Work", name: "Bilal Hussain", date: "2025-03-18", status: "Pending" },
             { reason: "Marriage Leave", name: "Hassan Javed", date: "2025-03-19", status: "Pending" },
             { reason: "Training", name: "Zainab Fatima", date: "2025-03-20", status: "Pending" },
-            { reason: "Parental Leave", name: "Farhan Saeed", date: "2025-03-21", status: "Pending" },
+            { reason: "Parental Leave", name: "Farhan Saeed", date: "2025-03-21", status: "Rejected" },
             { reason: "Holiday", name: "Noor Bano", date: "2025-03-22", status: "Pending" },
             { reason: "Doctor Appointment", name: "Imran Qureshi", date: "2025-03-23", status: "Pending" },
-            { reason: "Maternity Leave", name: "Rabia Anwar", date: "2025-03-24", status: "Pending" },
+            { reason: "Maternity Leave", name: "Rabia Anwar", date: "2025-03-24", status: "Approved" },
             { reason: "Paternity Leave", name: "Tariq Mehmood", date: "2025-03-25", status: "Pending" },
             { reason: "Conference", name: "Shahbaz Ali", date: "2025-03-26", status: "Pending" },
-            { reason: "Bereavement Leave", name: "Faisal Zafar", date: "2025-03-27", status: "Pending" },
+            { reason: "Bereavement Leave", name: "Faisal Zafar", date: "2025-03-27", status: "Approved" },
             { reason: "Work from Home", name: "Kamran Riaz", date: "2025-03-28", status: "Pending" },
             { reason: "Festival Leave", name: "Nadia Akram", date: "2025-03-29", status: "Pending" }
           ]))
           
         const FetchData = JSON.parse(sessionStorage.getItem("Employees"))|| [];
-        const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];
+        const FetchDepartments = JSON.parse(sessionStorage.getItem("Departments"))|| [];  
         const FetchMeeting = JSON.parse(sessionStorage.getItem("Meeting"))|| [];
         const FetchName = JSON.parse(sessionStorage.getItem("indname")) || "";
         const FetchDisc = JSON.parse(sessionStorage.getItem('disc')) || "";

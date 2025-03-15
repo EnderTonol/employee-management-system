@@ -75,7 +75,7 @@ function Departments() {
     };
 
     return(
-        <motion.div className="flex flex-col h-full gap-2 p-2 grow bg-slate-300"
+        <motion.div className="flex flex-col h-full gap-2 p-2 grow "
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
         >

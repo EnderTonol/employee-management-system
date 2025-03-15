@@ -70,7 +70,7 @@ function Tasks() {
 
   return (
     <>
-      <div className="flex flex-col h-full gap-2 p-2 grow bg-slate-300">
+      <div className="flex flex-col h-full gap-2 p-2 grow">
         <Header title="Assign Tasks" />
         <Button onPress={onOpen} color="primary">
           Add Task
