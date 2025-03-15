@@ -133,8 +133,9 @@ function Departments() {
                     </div>
                 </AccordionItem>
             </Accordion>
+        
             {departments.length !== 0 ? (
-                <motion.div className="grid grid-cols-2 gap-2 p-2 rounded-3xl bg-slate-200">
+                <motion.div className="grid grid-cols-1 lg:grid-cols-2 gap-2 p-2 rounded-3xl bg-slate-200">
                     {departments.map((dep, index) => (
                         <Card key={index} className="flex flex-col">
                             <CardHeader className="flex flex-col items-start">
