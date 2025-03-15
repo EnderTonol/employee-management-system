@@ -15,7 +15,8 @@ import {
 import NotFoundIcon from "../Images/not-found.png";
 import { Link } from "react-router-dom";
 import { Employee_context } from "../Context";
-import Header from "../../Header";
+import Header from '../Header';
+import { addToast } from "@heroui/toast";
 
 function EmployeesShow() {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -59,8 +60,17 @@ function EmployeesShow() {
             setEmployees(prev => {
                 const updated = [...prev];
                 updated[editIndex] = newEmployee;
+                addToast({
+                    title: "Employee Updated",  
+                    description: "Data transmitted",
+                    timeout: 2000,
+                    shouldShowTimeoutProgress: true,
+                    variant: "bordered",
+                    color: "success"
+                  });
                 return updated;
             });
+            
         }
         if (
             !newEmployee.name ||
@@ -83,17 +93,33 @@ function EmployeesShow() {
                 Tel: ""
             });
             setEditIndex(null);
+            addToast({
+                title: "Employee Added",
+                description: "Data transmitted",
+                timeout: 2000,
+                shouldShowTimeoutProgress: true,
+                variant: "bordered",
+                color: "success"
+              });
             onOpenChange(false);
     };
 
     const handleEdit = (index) => {
         setEditIndex(index);
         setNewEmployee(employees[index]);
+        addToast({
+            title: "Employee Updated",
+            description: "Data transmitted",
+            timeout: 2000,
+            shouldShowTimeoutProgress: true,
+            variant: "bordered",
+            color: "success"
+          });
         onOpen();
     };
 
     return employees.length !== 0 ? (
-        <motion.div className="p-2 bg-stone-300 flex flex-col gap-2 items-center justify-center w-full"
+        <motion.div className="p-2 grow bg-slate-300 flex flex-col gap-2 h-full"
             initial={{opacity: 0, y: -10}}
             animate={{opacity: 1, y: 0}}
         >
@@ -165,9 +191,10 @@ function EmployeesShow() {
                 </ModalContent>
             </Modal>
             <Header title="Employees Detail"/>
+            <Button className="w-full" color="primary" onPress={onOpen}>Add Employee</Button>
             <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4">
                 {employees.map((employee, idx) => (
-                    <Card key={idx} className="flex flex-col w-[300px]">
+                    <Card key={idx} className="flex flex-col">
                         <CardHeader className="flex flex-col items-start">
                             <p className="text-sm">{"#" + (idx + 1)}</p>
                             <p className="text-lg font-medium">{employee.name}</p>
@@ -188,17 +215,25 @@ function EmployeesShow() {
                         <CardFooter className="flex">
                             <p className="grow"></p>
                                 <ButtonGroup>
+                                <Button color="primary" onPress={() => handleEdit(idx)}>
+                                    Edit
+                                </Button>
                                 <Button
                                     color="danger"
                                     variant="flat"
-                                    onPress={() =>
-                                        setEmployees(employees.filter((_, index) => index !== idx))
-                                    }
+                                    onPress={() => {
+                                        setEmployees(employees.filter((_, index) => index !== idx));
+                                        addToast({
+                                            title: "Employee Deleted",
+                                            description: "Data transmitted",
+                                            timeout: 2000,
+                                            shouldShowTimeoutProgress: true,
+                                            variant: "bordered",
+                                            color: "success"
+                                        });
+                                    }}
                                 >
                                     Delete
-                                </Button>
-                                <Button color="primary" onPress={() => handleEdit(idx)}>
-                                    Edit
                                 </Button>
                                 </ButtonGroup>
                         </CardFooter>

@@ -1,5 +1,5 @@
 import IconButton from '@mui/material/IconButton';
-import ThreeLines from './assets/icons/three.png';
+import ThreeLines from '../assets/icons/three.png';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import {
@@ -12,20 +12,16 @@ import {
     useDisclosure,
 } from "@heroui/react";
 
-function Header({ title }) {
+function StaffHeader({ title }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("/");
 
   const navItems = [
-    { key: 1, path: "/dashboard", title: "Dashboard" },
-    { key: 2, path: "/employees", title: "Employees" },
-    { key: 3, path: "/employees-data", title: "Detail Employees" },
-    { key: 4, path: "/meetings", title: "Meeting" },
-    { key: 5, path: "/departments", title: "Departments" },
-    { key: 6, path: "/assign-task", title: "Tasks" },
-    { key: 7, path: "/Admin-employee-leaves", title: "Employee Leaves" }
+    { key: 1, path: "/staff-dashboard", title: "Staff Dashboard" },
+    { key: 2, path: "/emp-tasks", title: "Employee tasks" },
+    { key: 3, path: "/employee-leaves", title: "Employee Leaves" }
   ];
 
   const handlepath = (path) =>{
@@ -34,13 +30,15 @@ function Header({ title }) {
   }
     return (
         <>
-            <div className="h-14 w-full rounded-lg bg-slate-50 flex flex-row gap-1 items-center p-2 lg:hidden">
+            <div className="h-14 w-full rounded-lg bg-slate-50 flex flex-row gap-1 items-center p-2">
+                <div className='lg:hidden'>
                 <IconButton aria-label="navigation" color="primary" onClick={() => onOpen()}>
                     <img className='h-8' src={ThreeLines} />
                 </IconButton>
+                </div>
                 <p className="font-bold text-lg font-sans">{title}</p>
             </div>
-            <Drawer isOpen={isOpen}  onClose={onClose} placement='left'>
+            <Drawer isOpen={isOpen}  onClose={onClose} placement='left' size='xs'>
                 <DrawerContent>
                     {(onClose) => (
                         <>
@@ -68,4 +66,4 @@ function Header({ title }) {
         </>
     )
 }
-export default Header;
+export default StaffHeader;

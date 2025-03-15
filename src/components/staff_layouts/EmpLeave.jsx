@@ -17,8 +17,11 @@ import {
     useDisclosure,
     ModalContent,
     DatePicker,
+    Chip
 } from "@heroui/react";
 import { Employee_context } from "../Context";
+import StaffHeader from "../stafheader";
+import { addToast } from "@heroui/toast";
 
 function Employee_leaves() {
     const context = useContext(Employee_context);
@@ -43,6 +46,15 @@ function Employee_leaves() {
 
     const handleRemove = (index) => {
         setEmployeeLeaves((prev) => prev.filter((_, i) => i !== index));
+        addToast({
+            title: "Removed",
+            description: "Data transmitted",
+            timeout: 1000,
+            shouldShowTimeoutProgress: true,
+            variant: "bordered",
+            color: "danger"
+          });
+
     };
 
     const handleDateChange = (dateObj) => {
@@ -53,9 +65,9 @@ function Employee_leaves() {
 
     return (
         <>
-            <div className="p-2">
-                <h1>Assigned Leaves</h1>
-                <Button onPress={onOpen} color="primary">
+            <div className="grow flex flex-col p-2 gap-2">
+                <StaffHeader title="Assigned Leaves" />
+                <Button className="w-full" onPress={onOpen} color="primary">
                     Add Application
                 </Button>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
@@ -96,22 +108,25 @@ function Employee_leaves() {
                         )}
                     </ModalContent>
                 </Modal>
+                <div className="grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                 {EmployeeLeaves.length > 0 ? (
                     EmployeeLeaves.map((itm, idx) =>
                         itm.reason ? (
                             <Card key={idx}>
                                 <CardHeader>
-                                    <p className="test-tiny">{"#0" + (idx + 1)}</p>
+                                    <p className="text-tiny">#{idx + 1}</p>
                                 </CardHeader>
                                 <Divider />
                                 <CardBody>
                                     <p>Name: {itm.name}</p>
                                     <p>Task: {itm.reason}</p>
-                                    <Divider />
+                                    <Chip color={
+                                        itm.status === "Pending" ? "warning" : (itm.status === "Approved" ? "success" : "danger")
+                                    } radius="sm" variant="flat">{itm.status}</Chip>
                                 </CardBody>
+                                <Divider />
                                 <CardFooter>  
-                                    <p>Status: {itm.status}</p>
-                                    <Button color="danger" variant="light" onPress={() => handleRemove(idx)}>Cancel</Button>
+                                    <Button color="danger" className={itm.status === "Pending" ? "w-full" : "hidden"} variant="solid" onPress={() => handleRemove(idx)}>Cancel</Button>
                                 </CardFooter>
                             </Card>
                         ) : null
@@ -119,6 +134,7 @@ function Employee_leaves() {
                 ) : (
                     <p>No tasks assigned.</p>
                 )}
+                </div>
             </div>
         </>
     );

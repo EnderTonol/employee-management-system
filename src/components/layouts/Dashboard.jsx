@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from 'react';
 import { Employee_context } from '../Context';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import { Alert, Input } from '@heroui/react';
-import Header from '../../Header';
+import Header from '../Header';
 
 function DashBoard() {
     const [empSal, setEmpSal] = useState([]);

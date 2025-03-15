@@ -1,4 +1,3 @@
-import ReactApexChart from "react-apexcharts";
 import { motion } from "framer-motion";
 import { useEffect, useState, useContext } from "react";
 import { Employee_context } from "../Context";
@@ -9,16 +8,13 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  Calendar,
   Link,
   Divider,
 } from "@heroui/react";
 import { Image } from "@heroui/image";
 import NoResults from "../Images/noFoundR.jpg";
-import { today, getLocalTimeZone } from "@internationalized/date";
-import EditIcon from "../Images/edit.png";
 import Table1 from "../layouts/Table";
-
+import StaffHeader from "../stafheader";
 function StaffDashBoard() {
   const [meeting, setmeeting] = useState([]);
 
@@ -28,7 +24,7 @@ function StaffDashBoard() {
       "DashBoard component must be wrapped within a ContextProvider"
     );
   }
-  const { employees, Meeting, EmployeeStatus, setEmployeeStatus } = context;
+  const { Meeting, EmployeeStatus, EmployeeLeaves } = context;
 
   useEffect(() => {
     const fetchData = localStorage.getItem("Meeting");
@@ -38,51 +34,10 @@ function StaffDashBoard() {
     }
   }, []);
 
-  useEffect(() => {
-    if (employees && employees.length > 0) {
-      const emp = [
-        {
-          name: "Tariq",
-          task: "Provide IT support for internal staff",
-          taskStatus: true,
-        },
-        {
-          name: "Laila",
-          task: "Design user interfaces for mobile apps",
-          taskStatus: false,
-        },
-        {
-          name: "Nashit",
-          task: "Process payroll for employees",
-          taskStatus: true,
-        },
-        {
-          name: "Rida",
-          task: "Manage social media accounts",
-          taskStatus: false,
-        },
-        {
-          name: "Yasir",
-          task: "Oversee treasury operations",
-          taskStatus: true,
-        },
-      ];
-      setEmployeeStatus(emp);
-    }
-  }, []);
 
   return (
-    <div className="p-2 grow">
-      <motion.div
-        className="flex flex-row justify-between p-2"
-        initial={{ x: -10, opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        transition={{ type: "easeIn", duration: 0.3 }}
-      >
-        <h4 className="pl-20 font-sans text-2xl font-bold text-gray-950">
-          Staff DashBoard
-        </h4>
-      </motion.div>
+    <div className="p-2 grow w-full bg-slate-600 flex flex-col gap-2">
+      <StaffHeader title="Staff DashBoard" />
       <motion.div
         initial={{ x: -10, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
@@ -119,13 +74,38 @@ function StaffDashBoard() {
         <div className="w-full p-3 rounded-md bg-slate-300">
           <h1 className="mb-2 font-bold">Leaves of Employees</h1>
           <Divider />
+          <Table
+            classNames={{
+              base: "max-h-[300px] overflow-scroll",
+              table: "min-h-[20px]",
+            }}
+          >
+            <TableHeader>
+              <TableColumn>Employee</TableColumn>
+              <TableColumn>Date</TableColumn>
+              <TableColumn>Status</TableColumn>
+            </TableHeader>
+          <TableBody>
+                {
+                  EmployeeLeaves.map((itm, index) => (
+                    <>
+                        <TableRow key={index + 1}>
+                            <TableCell>{itm.name}</TableCell>
+                            <TableCell>{itm.date}</TableCell>
+                            <TableCell>{itm.status}</TableCell>
+                        </TableRow>
+                        </>
+                    ))
+                  }
+          </TableBody>
+          </Table>
         </div>
       </motion.div>
       <motion.div
         initial={{ x: -10, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ type: "easeIn", duration: 0.3 }}
-        className="flex flex-col w-full gap-2 mt-3 lg:flex-row"
+        className="flex flex-col w-full gap-2 lg:flex-row"
       >
         <div className="w-full p-2 rounded-md bg-slate-300">
           <h1 className="mb-2 font-bold">Meetings</h1>
@@ -155,13 +135,6 @@ function StaffDashBoard() {
           )}
         </div>
         <Table1 />
-        <div className="w-auto p-3 rounded-md bg-slate-300">
-          <Calendar
-            isReadOnly
-            aria-label="Date (Read Only)"
-            value={today(getLocalTimeZone())}
-          />
-        </div>
       </motion.div>
       <div className="flex flex-row w-full h-auto gap-2 p-4 mt-2 font-mono rounded-md bg-slate-300">
         © 2021 EMS All Rights Reserved | Developed by&nbsp;Abdul Quddus |&nbsp;

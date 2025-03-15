@@ -9,6 +9,7 @@ import {
   Divider
 } from "@heroui/react";
 import { addToast } from '@heroui/toast'
+import StaffHeader from "../stafheader";
 
 function EmployeeStatus() {
   const context = useContext(Employee_context);
@@ -28,22 +29,24 @@ function EmployeeStatus() {
     addToast({
       title: newTasks[idx].taskStatus ? "Completed" : "InCompleted",
       description: "Data transmitted",
-      timeout: 3000,
+      timeout: 2000,
       shouldShowTimeoutProgress: true,
       variant: "bordered",
-      color: newTasks[idx].taskStatus ? "primary" : "danger"
+      color: newTasks[idx].taskStatus ? "success" : "danger"
     });
   };
 
   return (
     <>
-      <div className="flex flex-wrap p-6">
+      <div className="grow flex flex-col p-2 gap-2">
+        <StaffHeader title="Employee Tasks" />
+        <div className="grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {EmployeeStatus.length > 0 ? (
           EmployeeStatus.map((itm, idx) =>
             itm.task ? (
-              <Card key={idx} className="w-[300px]">
+              <Card key={idx} className="w-full">
                 <CardHeader>
-                  <p className="test-tiny">{"#0" + (idx + 1)}</p>
+                  <p className="text-tiny">#{idx + 1}</p>
                 </CardHeader>
                 <Divider />
                 <CardBody>
@@ -53,7 +56,7 @@ function EmployeeStatus() {
                 <Divider />
                 <CardFooter>
                   <Button
-                    color={itm.taskStatus ? "primary" : "danger"}
+                    color={itm.taskStatus ? "success" : "danger"}
                     className="w-full"
                     onPress={() => handleToggleStatus(idx)}
                   >
@@ -66,6 +69,7 @@ function EmployeeStatus() {
         ) : (
           <p>No tasks assigned yet.</p>
         )}
+        </div>
       </div>
     </>
   );

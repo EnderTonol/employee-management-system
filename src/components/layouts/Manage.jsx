@@ -23,7 +23,8 @@ import {
 } from "@heroui/react";
 import { useDisclosure } from "@heroui/react";
 import {  } from "@heroui/toast";
-import Header from "../../Header";
+import Header from '../Header';
+import { addToast } from "@heroui/toast";
 
 function ManageEvents() {
     const { Meeting, setMeeting, departments, Todo, setTodo } = useContext(Employee_context);
@@ -57,7 +58,15 @@ function ManageEvents() {
             return;
         }
     
-        setMeeting((prev) => [...prev, NwMeeting]);
+        setMeeting((prev) => [NwMeeting, ...prev]);
+        addToast({
+            title: "Meeting Added",
+            description: "Data transmitted",
+            timeout: 2000,
+            shouldShowTimeoutProgress: true,
+            variant: "bordered",
+            color: "success"
+          });
         onOpenChange(false);
     };
 
@@ -117,7 +126,7 @@ function ManageEvents() {
                         {(onClose) => (
                             <div className="flex flex-col gap-2">
                                 <ModalHeader>
-                                    <motion.h1 className="mb-1 font-sans text-xl">
+                                    <motion.h1 className="font-sans text-xl">
                                         Add Meeting
                                     </motion.h1>
                                 </ModalHeader>
@@ -171,10 +180,9 @@ function ManageEvents() {
                 </Modal>
                 <Header title="Meetings"/>
             </div>
-
             <div className="p-2">
                 {Meeting.length > 0 ? (
-                    <Button onPress={onOpen} color="primary" className="w-full mb-2">
+                    <Button onPress={onOpen} color="primary" className="w-full">
                         New Meeting
                     </Button>
                 ) : (
@@ -204,13 +212,21 @@ function ManageEvents() {
                                         <Divider />
                                         <CardFooter className="flex flex-row justify-between">
                                             <Button
-                                                onPress={() =>
+                                                onPress={() => {    
                                                     setMeeting(
                                                         Meeting.filter(
                                                             (_, idx) => idx !== index
                                                         )
-                                                    )
-                                                }
+                                                    );
+                                                    addToast({
+                                                        title: "Meeting Deleted",
+                                                        description: "Data transmitted",
+                                                        timeout: 3000,
+                                                        shouldShowTimeoutProgress: true,
+                                                        variant: "bordered",
+                                                        color: "danger"
+                                                    });
+                                                }}
                                                 color="danger"
                                             >
                                                 Delete

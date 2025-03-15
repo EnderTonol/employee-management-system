@@ -5,7 +5,8 @@ import {Accordion, AccordionItem} from "@heroui/react";
 import { useState, useContext } from "react";
 import { Employee_context } from "../Context";
 import DepIcon from "../Images/department.png";
-import Header from "../../Header";
+import Header from '../Header';
+import { addToast } from "@heroui/toast";
 
 function Departments() {
     const [newDepartment, setNewDepartment] = useState({ Name: "", ManagerName: "", Tel: "", Email: "", Discription: "" });
@@ -25,7 +26,14 @@ function Departments() {
 
     const handleSubmit = () => {
         if (!newDepartment.Name || !newDepartment.ManagerName || !newDepartment.Tel || !newDepartment.Email || !newDepartment.Discription) {
-            alert("All fields are required.");
+            addToast({
+                title: "Warning",
+                description: "All fields are required.",
+                timeout: 2000,
+                shouldShowTimeoutProgress: true,
+                variant: "bordered",
+                color: "warning"
+              });
             return;
         }
     
@@ -33,11 +41,27 @@ function Departments() {
             setDepartments(prev => {
                 const updated = [...prev];
                 updated[editIndex] = newDepartment;
+                addToast({
+                    title: "Department Updated",
+                    description: "Data transmitted",
+                    timeout: 2000,
+                    shouldShowTimeoutProgress: true,
+                    variant: "bordered",
+                    color: "success"
+                  });
                 return updated;
             });
             setEditIndex(null);
         } else {
             setDepartments(prev => [...prev, newDepartment]);
+            addToast({
+                title: "Department Added",
+                description: "Data transmitted",
+                timeout: 2000,
+                shouldShowTimeoutProgress: true,
+                variant: "bordered",
+                color: "success"
+              });
         }
         setNewDepartment({ Name: "", ManagerName: "", Tel: "", Email: "", Discription: "" });
         setExpandedKey(null);
@@ -65,8 +89,8 @@ function Departments() {
                 }}
             >
                 <AccordionItem key="add-edit-department" title={editIndex !== null ? "Edit Department" : "Add Department"}>
-                    <div className="grid grid-cols-2 gap-3">
-                        <div className="flex flex-col gap-2 mb-4">
+                    <div className="flex gap-2 lg:flex-row flex-col">
+                        <div className="flex flex-col gap-2 mb-4 grow">
                             <Input label="Department Name" name="Name" value={newDepartment.Name} onChange={handleChange} />
                             <Input label="Manager" name="ManagerName" value={newDepartment.ManagerName} onChange={handleChange} />
                             <Input label="Tel" name="Tel" value={newDepartment.Tel} onChange={handleChange} />
@@ -85,7 +109,7 @@ function Departments() {
                                 )}
                             </div>
                         </div>
-                        <Card className="flex flex-col items-start justify-center p-2">
+                        <Card className="hidden lg:flex flex-col items-start justify-center p-2 grow">
                             <Chip color="warning" variant="dot">Preview</Chip>
                             <CardHeader className="flex flex-col items-start">
                                 <p className="font-medium text-large">{newDepartment.Name || "Department Name"}</p>
@@ -131,8 +155,18 @@ function Departments() {
                                     <p>Tel: {dep.Tel}</p>
                                 </div>
                                 <ButtonGroup>
-                                    <Button onPress={() => setDepartments(departments.filter((_, i) => i !== index))} variant="flat" color="danger">Delete</Button>
                                     <Button onPress={() => handleEdit(index)} color="primary">Edit</Button>
+                                    <Button onPress={() =>{
+                                        setDepartments(departments.filter((_, i) => i !== index));
+                                        addToast({
+                                            title: "Department Deleted",
+                                            description: "Data transmitted",
+                                            timeout: 3000,
+                                            shouldShowTimeoutProgress: true,
+                                            variant: "bordered",
+                                            color: "success"
+                                          });
+                                        }} variant="flat" color="danger">Delete</Button>
                                 </ButtonGroup>
                             </CardFooter>
                         </Card>

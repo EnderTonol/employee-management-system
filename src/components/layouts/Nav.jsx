@@ -2,7 +2,7 @@ import { Button,useDisclosure, Divider,Image,Alert } from "@heroui/react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import emsLogo from "../Images/EMSlogo.jpg";
-import Header from "../../Header";
+
 function Nav() {
   const [activeTab, setActiveTab] = useState("/");
   const navigate = useNavigate();

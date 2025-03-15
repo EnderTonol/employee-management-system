@@ -4,7 +4,6 @@ import { useState } from "react";
 import {  Drawer,  DrawerContent,  DrawerHeader,  DrawerBody,  DrawerFooter} from "@heroui/drawer";
 import Menu from '../Images/menu.png';
 import emsLogo from "../Images/EMSlogo.jpg";
-import { motion} from "framer-motion";
 function StafNav(){
 
     const navigate = useNavigate();

@@ -79,7 +79,7 @@ const Layout = ({ children }) => (
            <p className="font-sans text-center font-3xl">YOU NEED LARGER SCREEN!</p>
            <p className="font-mono text-medium">FOR RUN SITE!!! THAN YOUR DEVICE</p>
     </div> */}
-    <div className="flex bg-slate-300 h-full">
+    <div className="flex bg-slate-300 h-full w-full">
         {children}
     </div>
     </>

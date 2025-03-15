@@ -13,7 +13,8 @@ import {
 import { Form, Input, Button } from "@heroui/react";
 import { Employee_context } from "../Context";
 import NotFoundIcon from "../Images/not-found.png";
-import Header from "../../Header";
+import Header from '../Header';
+import { addToast } from "@heroui/toast";
 
 function Employees() {
     
@@ -46,6 +47,14 @@ function Employees() {
             return; // Stop submission if validation fails
         }
         setEmployees((prev) => [...prev, newEmployee]);
+        addToast({
+            title: "Employee Added",
+            description: "Data transmitted",
+            timeout: 2000,
+            shouldShowTimeoutProgress: true,
+            variant: "bordered",
+            color: "success"
+          });
         onOpenChange(false); 
     };
 
@@ -57,7 +66,7 @@ function Employees() {
         <Header title="Employees"/>
     {employees.length !== 0 ? ( <Button color="primary" onPress={onOpen}>Add Employee</Button>) : null}
       
-        <Modal isOpen={isOpen} onOpenChange={onOpenChange} backdrop="blur" placement="center">
+        <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="center">
                     <ModalContent>
                         {(onClose) => (
                             <>
